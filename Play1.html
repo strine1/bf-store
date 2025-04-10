@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar">
+  
+    
+<head>
+
+    <link rel="icon" href="images/11.ico" type="image/x-icon">
+    <link rel="icon" href="images/11.ico" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/11.ico" sizes="16x16" type="image/png">
+    <link rel="icon" href="images/11.ico" sizes="96x96" type="image/png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة خمن الرقم</title>
+    <link rel="stylesheet" href="play1.css">
+</head>
+<body>
+
+    <script>
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) {  // F12
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl+Shift+I
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {  // Ctrl+Shift+J
+                return false;
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+<div class="game-container">
+    <h1>لعبة خمن الرقم</h1>
+    <p>اختر رقمًا بين 1 و 100</p>
+    <input type="number" id="userInput" placeholder="أدخل الرقم">
+    <button onclick="checkGuess()">تخمين</button>
+    <p id="resultMessage"></p>
+    <p>عدد المحاولات: <span id="attempts">8</span> / <span id="maxAttempts">8</span></p> <!-- عرض الحد الأقصى للمحاولات -->
+    <p>الوقت المتبقي: <span id="timer">90</span> ثانية</p>
+    <button id="restartButton" onclick="restartGame()">إعادة المحاولة</button>
+</div>
+
+<script src="play.js"></script>
+
+
+<footer class="footer">
+    <p>&copy; 2025 لعبة التخمين. جميع الحقوق محفوظة.</p>
+</footer>
+
+
+</body>
+</html>

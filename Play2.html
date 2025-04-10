@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+    <link rel="icon" href="images/game2.ico" type="image/x-icon">
+    <link rel="icon" href="images/game2.ico" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/game2.ico" sizes="16x16" type="image/png">
+    <link rel="icon" href="images/game2.ico" sizes="96x96" type="image/png">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة Flappy Bird</title>
+    <link rel="stylesheet" href="Play2.html">
+</head>
+<body>
+    <!-- شاشة بداية اللعبة -->
+    <div id="startScreen">
+        <div>اضغط على المسافة لبدء اللعبة</div>
+    </div>
+
+    <!-- شاشة نهاية اللعبة -->
+    <div id="gameOverScreen" style="display:none;">
+        <div>اللعبة انتهت!</div>
+        <button id="restartButton">إعادة اللعب</button>
+    </div>
+
+    <!-- لوحة النتيجة -->
+    <div class="score-board">
+        <div class="score">Score: 0</div>
+        <div class="highScore">High Score: 0</div>
+    </div>
+
+    <!-- مكان اللعبة -->
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="play2.js"></script>
+</body>
+</html>

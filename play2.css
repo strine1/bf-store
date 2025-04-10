@@ -1,0 +1,106 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Canvas */
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00b0ff; /* خلفية الصفحة زرقاء */
+    overflow: hidden;
+}
+
+canvas {
+    background: linear-gradient(45deg, #b2f7fb, #74e5ff, #abecfc);
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Score Board */
+.score-board {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    color: #252525; /* اللون الأصفر للنتيجة */
+    z-index: 10;
+}
+
+.score, .highScore {
+    font-family: Arial, sans-serif;
+    color: #262626; /* اللون الأصفر للنتيجة */
+}
+
+/* Game Over Screen */
+#gameOverScreen {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    display: none;
+}
+
+#gameOverScreen button {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Start Screen */
+#startScreen {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    display: block;
+}
+
+/* Button Styles */
+#restartButton {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#startScreen div {
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+    color: white;
+}
+
+/* Media Queries for Smaller Devices */
+@media (max-width: 768px) {
+    .score-board {
+        font-size: 20px;
+    }
+
+    #gameOverScreen, #startScreen {
+        font-size: 30px;
+    }
+
+    #restartButton {
+        font-size: 16px;
+    }
+}
+
