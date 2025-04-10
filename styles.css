@@ -1,0 +1,533 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* إخفاء زر القائمة على الشاشات الكبيرة */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* تنسيق القائمة */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  color: rgb(60, 60, 60);
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+/* **إخفاء القائمة على الهواتف وجعلها تظهر عند النقر** */
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block; /* إظهار زر الثلاث شرطات */
+      position: absolute;
+      top: 20px;
+      right: 20px;
+  }
+
+  nav {
+      display: none; /* إخفاء القائمة */
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      border-radius: 10px;
+  }
+
+  nav ul {
+      flex-direction: column;
+      gap: 15px;
+  }
+
+  nav ul li {
+      display: block;
+  }
+
+  nav.show {
+      display: block; /* إظهار القائمة عند النقر */
+  }
+}
+
+
+@media (max-width: 1024px) { /* لأجهزة التابلت */
+  .product {
+    flex: 1 1 calc(50% - 20px); /* صفين بدل 3 منتجات */
+  }
+}
+
+@media (max-width: 768px) { /* لأجهزة الموبايل */
+  .product {
+    flex: 1 1 100%; /* منتج واحد في كل صف */
+  }
+
+  nav ul {
+    flex-direction: column; /* تحويل القائمة إلى عمودية */
+    text-align: center;
+  }
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #2d2d2d;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, #2d2d2d, #2a2a2a,#2d2d2d);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 21px;
+}
+/* تنسيق الأيقونة */
+#whatsapp-icon {
+  position: fixed;
+  bottom: 20px;  /* المسافة من الأسفل */
+  right: 20px;   /* المسافة من اليمين */
+  z-index: 1000; /* تأكد من أن الأيقونة تظهر فوق المحتوى الآخر */
+  transition: transform 0.3s ease; /* تأثير الانتقال */
+}
+
+#whatsapp-icon img {
+  width: 60px;   /* الحجم الذي تريده للأيقونة */
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف حول الأيقونة */
+  right: 3px;
+}
+
+/* تنسيق النص الذي سيظهر فوق الأيقونة */
+.whatsapp-text {
+  position: fixed;
+  bottom: 95px;  /* المسافة من الأسفل، فوق الأيقونة */
+  right: 20px;   /* المسافة من اليمين */
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;  /* النص مخفي بشكل افتراضي */
+  z-index: 999;   /* التأكد من أنه فوق كل العناصر */
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+#whatsapp-icon:hover {
+  transform: scale(1.2); /* تكبير الأيقونة عند مرور الماوس */
+}
+
+
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 60px; /* حجم الشعار */
+  height: auto;
+  margin-right: 10px;
+  border-radius: 12px;
+}
+
+
+header .logo h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+/* تنسيق شريط التنقل */
+nav {
+  background: #373737; /* لون الخلفية */
+  padding: 15px 0; /* مسافة داخلية علوية وسفلية */
+  text-align: center; /* توسيط العناصر */
+  border-radius: 14px;
+  margin-top: 12px;
+}
+
+nav ul {
+  list-style: none; /* إزالة النقاط */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* محاذاة العناصر وسط الصفحة */
+  gap: 20px; /* مسافة بين العناصر */
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  color: rgb(255, 255, 255); /* لون النص */
+  text-decoration: none; /* إزالة الخط السفلي */
+  font-size: 18px; /* حجم النص */
+  font-weight: bold;
+  padding: 10px 20px; /* مساحة داخلية */
+  border-radius: 9px; /* تدوير الحواف */
+  transition: background 0.7s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* تأثير عند تمرير الماوس */
+nav ul li a:hover {
+  background: #222222; /* لون مميز عند التمرير */
+  color: rgb(255, 255, 255); /* تغيير لون النص */
+
+}.login-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  text-align: center;
+}
+
+#login-icon img {
+  width: 60px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+#login-icon img:hover {
+  transform: scale(1.2);
+}
+
+.login-menu {
+  display: none;
+  position: absolute;
+  top: 48px;
+  right: 0.7px;
+  background: rgba(36, 36, 36, 0.75);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.login-menu a {
+  display: block;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.login-menu a:hover {
+  background: #ffffff;
+  color: #272626;
+}
+
+
+
+
+main {
+  padding: 50px 10%;
+  text-align: center;
+}
+
+.product-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* يجعل العمود مرن */
+  gap: 30px; /* التحكم في المسافة بين المنتجات */
+  padding: 20px;
+}
+
+
+.product {
+  width: 100%;
+  max-width: 320px; /* الحد الأقصى للعرض */
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+ flex: 1 1 calc(33.33% - 20px); /* لضبط 3 منتجات في كل صف */
+
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product:hover {
+  transform: scale(1.05);
+}
+
+.product video {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product img  {
+  flex: auto;
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product h2 {
+
+  font-size: 24px;
+  color: #272626;
+}
+
+.product  h6 {
+  color: #bc1111;
+  font-size: 16px;
+  margin: 10px 0;
+}
+.product p {
+  color: #5e5d5d;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  background: #f8f8f8;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #363535;
+  display: inline-block;
+  margin-top: 0; /* إزالة المسافة العلوية */
+  text-align: center;
+}
+
+.container {
+  width: 90%; /* يتمدد حسب حجم الشاشة */
+  max-width: 1200px; /* أقصى عرض */
+  margin: auto; /* توسيط العنصر */
+}
+
+
+
+.add-to-cart {
+  background: linear-gradient(45deg, #2d2d2d, #d4d4d4);
+  color: #fff;
+  border: none;
+  padding: 15px 22px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 150px; /* تحديد أقصى عرض للزر */
+  text-align: center;
+  transition: background 0.3s, transform 0.2s;
+}
+.add-to-cart:hover {
+  background: linear-gradient(45deg, #d4d4d4, #2d2d2d);
+  transform: scale(1.1);
+}
+
+footer  {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  text-align:center;
+  padding: 20px;
+  margin-top: 270px;
+  font-size: 20px;
+}
+/* إخفاء الأقسام في البداية */
+section {
+  opacity: 0;
+  transform: scale(0.8) translateY(100px); /* تصغير وتحريك لأسفل */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* عند ظهور القسم */
+section.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* قسم .about-section */
+.about-section {
+  background: white;
+  padding: 40px;
+  text-align: center;
+  margin-top: 16px;
+  border-radius: 24px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* إضافة تأثير للسحب والتكبير عند مرور المؤشر */
+}
+
+
+/* تأثيرات النص داخل .about-section */
+.about-section p {
+  font-family: 'Creepster', cursive; /* اختيار خط يشبه الكتابة بالدم */
+  font-size: 20px;
+  color: #8B0000;  /* لون دموي داكن */
+  text-align: center;
+   /* تدرج لوني يشبه الدم */
+/* جعل النص شفافًا ليظهر التدرج */
+  text-shadow: 4px 4px 8px rgba(139, 0, 0, 0.5); /* إضافة ظل للنص لإعطاء تأثير الدم */
+  padding: 20px;
+}
+  @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+.about-section:hover{
+  
+  transform: scale(1.1); /* تكبير بسيط */
+
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+
+/* قسم .about-section_shop */
+.about-section_shop {
+  background: white;
+  padding: 40px;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 24px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.4s ease; /* إضافة تأثير للسحب عند مرور المؤشر */
+  
+}
+
+.about-section_shop:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* تأثير الظل عند مرور المؤشر */
+  
+}
+
+/* تأثير العنوان داخل .about-section_shop */
+.about-section_shop h1 {
+  font-size: 28px; /* حجم العنوان */
+  color: #333; /* لون النص */
+  margin-bottom: 20px; /* مسافة تحت العنوان */
+  transition: color 0.3s ease, transform 0.3s ease; /* تأثير سلاسة للون والتكبير */
+}
+
+/* تأثير الصورة داخل .about-section_shop */
+.about-section_shop img {
+  width: 230px; /* ضبط حجم الصور */
+  height: auto; /* الحفاظ على الأبعاد الأصلية */
+  border-radius: 10px; /* تدوير الحواف */
+  margin: 10px; /* مسافة بين الصور */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل للصور */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* تأثير عند التحويل */
+}
+
+.about-section_shop img:hover {
+  transform: scale(1.1); /* تكبير الصورة عند التمرير */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* إضافة ظل أكبر للصورة */
+}
+
+
+.games-section {
+  background: white;
+  padding: 40px;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 24px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.4s ease; /* إضافة تأثير للسحب عند مرور المؤشر */
+
+}
+
+.games-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.games-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.game-card {
+    background: white;
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.game-card img {
+  height: 65px;
+    border-radius: 12px;
+}
+
+.play-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #FF5733, #FF8D33);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.play-button:hover {
+    background: linear-gradient(45deg, #FF8D33, #FF5733);
+    transform: scale(1.1);
+}
+
+
+footer :hover {
+  text-decoration: underline;
+ 
+}
+
