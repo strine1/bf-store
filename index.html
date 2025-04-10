@@ -7,7 +7,26 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/__BF-STORE - نسخة.ico" type="image/x-icon">
     
-   
+   <!-- عرض بيانات العميل -->
+  <div id="welcome-message">
+    <p id="user-welcome"></p>
+    <img id="user-pic" src="" alt="صورة المستخدم" />
+  </div>
+
+  <script>
+    // جلب بيانات العميل من localStorage
+    const userName = localStorage.getItem("user_name");
+    const userEmail = localStorage.getItem("user_email");
+    const userPic = localStorage.getItem("user_picture");
+
+    // إذا كانت البيانات موجودة، عرضها
+    if (userName && userEmail && userPic) {
+      document.getElementById("user-welcome").textContent = `مرحبًا ${userName} (${userEmail})`;
+      document.getElementById("user-pic").src = userPic;
+    } else {
+      document.getElementById("user-welcome").textContent = "أنت غير مسجل، يرجى تسجيل الدخول!";
+    }
+  </script>
    
 </head>
 
