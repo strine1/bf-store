@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الدفع 💵</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <form action="https://formsubmit.co/verify.ark.ai@gmail.com" method="POST" enctype="multipart/form-data">
+    <h3>قم بتحويل المبلغ المطلوب إلى هذا الحساب ثم ارفع صورة الإيصال هنا:</h3>
+    <h4>رقم الحساب : 2140068279940 - الأيبان: 3520000002140068279940</h4>
+    <a href="[بينات].jpg" target="_blank">
+      <img class="r1" src="تحويل سريع.png" alt="Bank Photo" width="145">
+    </a>
+
+    <input type="text" name="name" placeholder="ادخل اسمك الكامل" required><br><br>
+
+    <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required><br><br>
+    <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد من صحة البريد الإلكتروني قبل الإرسال!</span><br><br>
+    
+    
+    
+    <!-- اختيار المنتج بدلاً من المبلغ -->
+    <select name="product" id="product" onchange="updatePrice()" required>
+      <option disabled selected>اختر المنتج</option>
+      <option value="product1">تريل v4</option>
+      <option value="product2">إيقاض فاكة</option>
+      <option value="product3">سيوف اودن</option>
+      <option value="product4">سيوف ياماتو</option>
+      <option value="product5"> حساب بلوكس فروت</option>
+    </select><br><br>
+
+    <input type="file" name="receipt" accept="image/*" required onchange="previewImage(event)">
+    <img id="preview" style="display:none; max-width: 100%; margin-top: 10px;" />
+    <span style="font-size: 14px; color: #555;">يرجى إرفاق صورة إيصال الحوالة (صورة فقط)</span><br><br>
+    
+    <span>السعر: <span id="product-price">-- ر.س</span></span><br><br>
+
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_next" value="https://strine1.github.io/-/d" />
+    <input type="hidden" name="_subject" value="إيصال جديد من عميل" />
+
+    <button type="submit">لقد حوّلت المبلغ</button>
+  </form>
+
+  <footer><span class="icon">💸</span> U7-pay &copy; 100%</footer>
+
+  <script>
+    function previewImage(event) {
+      const preview = document.getElementById('preview');
+      preview.src = URL.createObjectURL(event.target.files[0]);
+      preview.style.display = 'block';
+    }
+
+    function updatePrice() {
+      const product = document.getElementById('product').value;
+      const prices = {
+        product1: "42 ر.س",
+        product2: "30 ر.س",
+       product3: "38 ر.س",
+       product4: "28 ر.س",
+        product5: "25 ر.س"
+      };
+      document.getElementById('product-price').innerText = prices[product] || "-- ر.س";
+    }
+  </script>
+
+</body>
+
+</html>

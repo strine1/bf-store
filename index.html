@@ -7,26 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/__BF-STORE - نسخة.ico" type="image/x-icon">
     
-   <!-- عرض بيانات العميل -->
-  <div id="welcome-message">
-    <p id="user-welcome"></p>
-    <img id="user-pic" src="" alt="صورة المستخدم" />
-  </div>
-
-  <script>
-    // جلب بيانات العميل من localStorage
-    const userName = localStorage.getItem("user_name");
-    const userEmail = localStorage.getItem("user_email");
-    const userPic = localStorage.getItem("user_picture");
-
-    // إذا كانت البيانات موجودة، عرضها
-    if (userName && userEmail && userPic) {
-      document.getElementById("user-welcome").textContent = `مرحبًا ${userName} (${userEmail})`;
-      document.getElementById("user-pic").src = userPic;
-    } else {
-      document.getElementById("user-welcome").textContent = "أنت غير مسجل، يرجى تسجيل الدخول!";
-    }
-  </script>
+ 
+  
    
 </head>
 
@@ -56,7 +38,7 @@
 
 <!-- النص الذي سيظهر فوق الأيقونة -->
 <div id="whatsapp-text" class="whatsapp-text">
-    لطلب والدفع اضغط هنا
+    لإستلام الطلبات اضغط هنا
     👇
 </div>
 
@@ -84,7 +66,7 @@
 
     <header id="home">
         <div class="logo">
-            <img src="images/BF-STORE.png" alt="شعار BF-STORE" class="logo-img">
+            <img src="BF-STORE.png" alt="شعار BF-STORE" class="logo-img">
             <h1>STORE</h1>
         </div>
         <nav><!--Start of Tawk.to Script-->
@@ -117,52 +99,72 @@
         <section id="products" class="product-section">
             <div class="product">
                 <video width="100%" height="auto" autoplay muted loop>
-                    <source src="videos/trial.mp4" type="video/mp4">
+                    <source src="trial.mp4" type="video/mp4">
                     متصفحك لا يدعم تشغيل الفيديو.
                 </video>
                 <h2>V4 تريل</h2>
                 <p>فل قير لريس واحد فقط انت تحدده V4 تريل</p>
                 <h6>ريس التنين غير متوفر</h6>
                 <p class="price">السعر: 42 ريال سعودي</p>
-                <button class="add-to-cart" >إضافة إلى السلة</button>
+                <!-- تعديل زر إضافة إلى السلة ليوجه المستخدم إلى صفحة الدفع -->
+<button class="add-to-cart" onclick="goToCheckout('V4 تريل - #00271')">إضافة إلى السلة</button>
+
 
                 <p>رقم المنتج #00271</p>
             </div>
             <div class="product">
-                <video width="100%" height="auto" loop poster="images/thamnilraid.png" controls> 
-                    <source src="videos/lv_0_٢٠٢٥٠٢٢٣١٨٣٩٣٠.mp4" type="video/mp4">
+                <video width="100%" height="auto" loop poster="thamnilraid.png" controls> 
+                    <source src="lv_0_٢٠٢٥٠٢٢٣١٨٣٩٣٠.mp4" type="video/mp4">
                     متصفحك لا يدعم تشغيل الفيديو.
                 </video>
                 <h2>إيقاض فاكهة</h2>
-                <p>إيقاض أي فاكهة تحددها انت رايد كامل   </p>
+                <p>إيقاض أي فاكة تحددها انت رايد كامل   </p>
                 <p class="price">السعر: 30 ريال سعودي</p>
-                <button class="add-to-cart" >إضافة إلى السلة</button>
+               <!-- تعديل زر إضافة إلى السلة ليوجه المستخدم إلى صفحة الدفع -->
+<button class="add-to-cart" onclick="goToCheckout('إيقاض فاكهة - #00272')">إضافة إلى السلة</button>
+
                 <p>رقم المنتج #00272</p>
             </div>
             <div class="product">
-                <img src="images/cdk.png" alt=" سيوف أودن" width="100%" height="auto">
+                <img src="cdk.png" alt=" سيوف أودن" width="100%" height="auto">
                 <h2> سيوف أودن</h2>
                 <p> نجيب لك سيوف اودن وإذا عندك واحد من السيوف نخصم لك نصف القيمة </p>
                 <p class="price">السعر: 38 ريال سعودي</p>
-                <button class="add-to-cart" >إضافة إلى السلة</button>
+                <!-- تعديل زر إضافة إلى السلة ليوجه المستخدم إلى صفحة الدفع -->
+<button class="add-to-cart" onclick="goToCheckout('سيوف أودن - #00273')">إضافة إلى السلة</button>
+
+
                 <p>رقم المنتج #00273</p>
             </div>
             <div class="product">
-                <img src="images/FoxLampSword.png" alt=" سيف ياماتو" width="100%" height="auto">
+                <img src="FoxLampSword.png" alt=" سيف ياماتو" width="100%" height="auto">
                 <h2> سيوف ياماتو</h2>
                 <p>نجيب لك سيف ياماتو </p>
                 <p class="price">السعر: 28 ريال سعودي</p>
-                <button class="add-to-cart" >إضافة إلى السلة</button>
+                <!-- تعديل زر إضافة إلى السلة ليوجه المستخدم إلى صفحة الدفع -->
+<button class="add-to-cart" onclick="goToCheckout('سيوف ياماتو - #00274')">إضافة إلى السلة</button>
                 <p>رقم المنتج #00274</p>
             </div>
             <div class="product">
-                <img src="images/حساب عشوائي.png" alt=" سيف ياماتو" width="100%" height="auto">
+                <img src="حساب عشوائي.png" alt=" سيف ياماتو" width="100%" height="auto">
                 <h2> حساب BLOXFRUIT</h2>
                 <p>حساب بلوكس فروت لفل ماكس غير مرتبط ب إيميل</p>
                 <p class="price">السعر: 25 ريال سعودي</p>
-                <button class="add-to-cart">إضافة إلى السلة</button>
+                <!-- تعديل زر إضافة إلى السلة ليوجه المستخدم إلى صفحة الدفع -->
+<button class="add-to-cart" onclick="goToCheckout('#00275')">إضافة إلى السلة</button>
+
                 <p>رقم المنتج #00275</p>
             </div>
+            <script>
+
+                // دالة تنقل المستخدم إلى صفحة الدفع مع رقم المنتج
+function goToCheckout(productId) {
+    // تخزين المنتج في الجلسة أو في قاعدة البيانات لتستخدمه في صفحة الدفع
+    sessionStorage.setItem('productId', productId);
+    window.location.href = "checkout.html"; // التوجيه إلى صفحة الدفع
+}
+
+            </script>
 
         </section>
 
@@ -219,9 +221,9 @@
   transition: box-shadow 0.4s ease; /* إضافة تأثير للسحب عند مرور المؤشر */
   
         }
-        .reviews-section:hover {
+        .reviews-section:hover{
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* تأثير الظل عند مرور المؤشر */
-  
+   
 }
 
         .reviews-container {
@@ -274,7 +276,7 @@
                 <img src="images/game2.ico" alt="Flappy Bird">
                 <h3>Flappy Bird </h3>
                 <a href="Play2.html" target="_blank" class="play-button">العب الآن</a>
-                <a href="signup.html" target="_blank" class="play-button"> تسجيل دخول </a>
+                
             </div>
         </div>
     </section>
