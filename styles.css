@@ -290,7 +290,7 @@ img, video {
 
 .product video {
   width: 100%;
-  height: 240px;
+  height: 245px;
   object-fit: cover;
   border-radius: 10px;
 }

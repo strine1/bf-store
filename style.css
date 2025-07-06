@@ -1,0 +1,205 @@
+
+/* تنسيق عام للجسم */
+body {
+  background: linear-gradient(-45deg, #ffffff, #aaaaaa, #5a5a5a);
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease infinite;
+  font-family: 'Cairo', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  direction: rtl;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+}
+
+/* حركة التدرج */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* النموذج */
+form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+/* العناوين */
+form h3,
+form h4 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+/* الحقول */
+input,
+textarea,
+button,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: 1px solid #e2e0e0;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* زر الإرسال */
+button {
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #1cb87f;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #8b8b8b;
+  border: 1px solid #242424;
+}
+
+button:hover {
+  background-color: #178f63;
+}
+
+button:active {
+  background-color: #148159;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* حقل الصورة */
+input[type="file"] {
+  padding: 5px;
+  background-color: #f9f9f9;
+  border: 2px dashed #f9f9f9;
+  text-align: center;
+}
+
+/* صورة البنك */
+.r1 {
+  border: 2px solid rgb(65, 65, 65);
+  border-radius: 14px;
+  padding: 0.1px;
+  background-color: #1a1a1a;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.r1:hover {
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.24), 0 17px 50px rgba(0, 0, 0, 0.19);
+  transform: scale(1.03);
+}
+
+/* القائمة المنسدلة */
+select {
+  background-color: #f0f0f0;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* حقل المبلغ */
+input[type="number"] {
+  background-color: #ffffff;
+  color: #403f3f;
+}
+
+/* فوتر متحرك */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #aaa;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  border-top: 1px solid #333;
+  z-index: 1000;
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    background-color: #1a1a1a;
+    color: #edecec;
+  }
+  50% {
+    background-color: #3e3e3e;
+    color: #fff;
+  }
+}
+
+.icon {
+  display: inline-block;
+  animation: wiggle 2s infinite;
+  margin-right: 5px;
+}
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* ✅ التنسيق العام لعرض المنتجات */
+section.products {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* افتراضيًا: منتج واحد في السطر */
+  gap: 16px;
+  padding: 20px;
+}
+
+/* ✅ تصميم كل منتج */
+section.products .product {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* ✅ استجابة الشاشات الصغيرة */
+@media (max-width: 600px) {
+  section.products {
+    grid-template-columns: repeat(2, 1fr); /* ✅ منتجين في الصف على الجوال */
+  }
+
+  form {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 10px 0;
+  }
+}
