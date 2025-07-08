@@ -15,68 +15,78 @@
 
         h2 {
             color: #333;
+            margin-bottom: 15px;
         }
 
-        .payment-options, .order-receipt {
+        .payment-options {
             background-color: #fff;
             padding: 20px;
             border-radius: 14px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 500px;
+            max-width: 550px;
             margin: auto;
         }
 
         label {
             display: block;
             margin: 10px 0;
+            font-size: 17px;
+        }
+
+        .note {
+            background-color: #fffae6;
+            border: 1px solid #f5d76e;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #333;
+            font-size: 15px;
+            line-height: 1.7;
         }
 
         button {
-            padding: 12px 25px;
-            margin-top: 20px;
+            padding: 14px 30px;
+            margin-top: 25px;
             background-color: #2d89ef;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 17px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
             background-color: #1c60b3;
         }
 
-        #order-id {
-            font-weight: bold;
-            color: #d12;
-        }
-
-        .receipt-product {
-            margin-top: 10px;
-            color: #555;
+        .center {
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
 <main>
- <section class="payment-options">
-    <h2> طريقة الدفع:</h2>
-    <form id="payment-form">
-        <label> تحويل بنكي</label>
-        <!-- إضافة الزر الذي ينقل المستخدم إلى admin.html -->
-        <button type="button" onclick="window.location.href='pay.html'" class="confirm-button">
-            إتمام الطلب
-        </button>
-    </form>
-</section>
+    <section class="payment-options">
+        <h2 class="center">طريقة الدفع</h2>
+        <form id="payment-form">
+            <label><strong>🔁 التحويل البنكي</strong></label>
 
+            <div class="note">
+                ✅ جميع منتجاتنا مضمونة 100%، وفي حال حدوث أي مشكلة يتم تعويضك أو استرداد المبلغ.<br><br>
+                ⏳ بعد الدفع، سيتم تجهيز طلبك خلال دقائق وإرساله لك فوراً عبر الواتساب أو الأيميل .<br><br>
+                🎁 العروض متاحة لفترة محدودة فقط – لا تفوت الفرصة!
+            </div>
 
+            <div class="center">
+                <button type="button" onclick="window.location.href='pay.html' " class="confirm-button">
+                    إتمام الطلب الآن
+                </button>
+            </div>
         </form>
     </section>
-
-  
-
+</main>
 
 </body>
 </html>

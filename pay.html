@@ -9,28 +9,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="cart1.png" type="image/x-icon">
 </head>
-
+<body>
 <body>
 
-  <form action="https://formsubmit.co/verify.ark.ai@gmail.com" method="POST" enctype="multipart/form-data">
+  <form action="https://formsubmit.co/verify.ark.ai@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="return validateDiscountCode()">
     <h3>قم بتحويل المبلغ المطلوب إلى هذا الحساب ثم ارفع صورة الإيصال هنا:</h3>
-    <h4>رقم الحساب : [ 2140068279940 ] 
+    
+    <div style="background-color: #fff8dc; padding: 15px; border-radius: 10px; margin-bottom: 15px; line-height: 1.8; border: 1px solid #eee;">
+      <strong>💳 رقم الحساب:</strong> 2140068279940<br>
+      <strong>🌍 الآيبان:</strong> SA3520000002140068279940
+    </div>
 
--
-
- الأيبان: [ SA3520000002140068279940 ]</h4>
     <a href="[بينات].jpg" target="_blank">
       <img class="r1" src="تحويل سريع.png" alt="Bank Photo" width="145">
     </a>
 
-    <input type="text" name="name" placeholder="ادخل اسمك الكامل" required><br><br>
+    <input type="text" name="name" placeholder="ادخل اسمك " required><br><br>
 
-    <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required><br><br>
+    <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required><br>
     <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد من صحة البريد الإلكتروني قبل الإرسال!</span><br><br>
-    
-    
-    
-    <!-- اختيار المنتج بدلاً من المبلغ -->
+
+    <input type="tel" name="phone" placeholder="أدخل رقم جوالك " pattern="[0-9]{10}" required><br>
+    <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد أن الرقم يبدأ بـ05 ويتكون من 10 أرقام</span><br><br>
+
     <select name="product" id="product" onchange="updatePrice()" required>
       <option disabled selected>اختر المنتج</option>
       <option value="trail-v4--42-SAR">تريل v4</option>
@@ -40,22 +41,94 @@
       <option value="acaountbloxfruit--28-SAR"> حساب بلوكس فروت</option>
     </select><br><br>
 
+
+    <!-- حقل إدخال كود الخصم -->
+<input type="text" id="discount-code" placeholder="ادخل كود الخصم" style="width: 100%; padding: 6px; margin-bottom: 6px;">
+
+<!-- زر تحقق صغير ومربع -->
+<button type="button" onclick="checkDiscountCode()" 
+  style="width: 50px; height: 30px; font-size: 12px; border-radius: 6px; cursor: pointer;">
+  تحقق
+</button>
+
+<!-- الرسالة تظهر تحت الزر -->
+<div id="discount-message" style="font-size: 14px; margin-top: 6px;"></div>
+
+<!-- وصف الخصم -->
+<small style="font-size: 14px; color: green; display: block; margin-top: 8px;">
+  كود خصم: يوجد كود خصم الآن، إذا تريد الحصول عليه تواصل معنا في التيكتوك أو الواتساب (خصم 20%)
+</small>
+
+
+<script>
+  function checkDiscountCode() {
+    const input = document.getElementById('discount-code').value.trim().toUpperCase();
+    const messageEl = document.getElementById('discount-message');
+    if(input === "BF20") {
+      messageEl.style.color = "green";
+      messageEl.innerText = "✅ تم قبول الكود! تم تطبيق خصم 20%.";
+      applyDiscount();
+    } else {
+      messageEl.style.color = "red";
+      messageEl.innerText = "❌ الكود غير صحيح، حاول مرة أخرى.";
+      applyDiscount(true);
+    }
+  }
+
+  function applyDiscount(reset = false) {
+    const prices = {
+      "trail-v4--42-SAR": 42,
+      "awakenFruit--30-SAR": 30,
+      "odensword--35-SAR": 35,
+      "FoxLamp--38-SAR": 38,
+      "acaountbloxfruit--28-SAR": 28
+    };
+    const productSelect = document.getElementById('product');
+    const productValue = productSelect.value;
+    const currentPrice = prices[productValue] || 0;
+    const discountMessage = document.getElementById('discount-message').innerText;
+    let discountedPrice = currentPrice;
+
+    if(reset || discountMessage.includes("غير صحيح")) {
+      discountedPrice = currentPrice;
+    } else {
+      const codeInput = document.getElementById('discount-code').value.trim().toUpperCase();
+      if(codeInput === "BF20") {
+        discountedPrice = (currentPrice * 0.8).toFixed(2);
+      }
+    }
+
+    document.getElementById('product-price').innerText = currentPrice + " ر.س";
+    document.getElementById('discounted-price').innerText = discountedPrice + " ر.س";
+  }
+
+  document.getElementById('product').addEventListener('change', () => {
+    document.getElementById('discount-message').innerText = "";
+    applyDiscount(true);
+  });
+</script>
+
     <input type="file" name="receipt" accept="image/*" required onchange="previewImage(event)">
     <img id="preview" style="display:none; max-width: 100%; margin-top: 10px;" />
     <span style="font-size: 14px; color: #555;">يرجى إرفاق صورة إيصال الحوالة (صورة فقط)</span><br><br>
-    
-    <span>السعر: <span id="product-price">-- ر.س</span></span><br><br>
+
+    <span>💰 السعر: <span id="product-price">-- ر.س</span></span><br>
+    <span>💸 السعر بعد الخصم: <span id="discounted-price">-- ر.س</span></span><br><br>
 
     <input type="hidden" name="_captcha" value="false" />
     <input type="hidden" name="_next" value="https://strine1.github.io/-/d" />
     <input type="hidden" name="_subject" value="إيصال جديد من عميل" />
 
-    <button type="submit">لقد حوّلت المبلغ</button>
+    <button type="submit"> لقد حوّلت المبلغ✅</button>
   </form>
 
-  <footer><span class="icon">💸</span> U7-pay &copy; 100%</footer>
+  <footer style="margin-top: 40px; text-align: center; font-size: 13px; color: #777;">
+    <span class="icon">💸</span> U7-pay &copy; جميع الحقوق محفوظة
+  </footer>
 
   <script>
+    let currentPrice = 0;
+
     function previewImage(event) {
       const preview = document.getElementById('preview');
       preview.src = URL.createObjectURL(event.target.files[0]);
@@ -65,15 +138,40 @@
     function updatePrice() {
       const product = document.getElementById('product').value;
       const prices = {
-        "trail-v4--42-SAR": "42 ر.س",
-        "awakenFruit--30-SAR": "30 ر.س",
-       "odensword--35-SAR": "35 ر.س",
-       "FoxLamp--38-SAR": "38 ر.س",
-       "acaountbloxfruit--28-SAR": "28 ر.س"
+        "trail-v4--42-SAR": 42,
+        "awakenFruit--30-SAR": 30,
+        "odensword--35-SAR": 35,
+        "FoxLamp--38-SAR": 38,
+        "acaountbloxfruit--28-SAR": 28
       };
-      document.getElementById('product-price').innerText = prices[product] || "-- ر.س";
+      currentPrice = prices[product] || 0;
+      document.getElementById('product-price').innerText = currentPrice + " ر.س";
+      applyDiscount();
+    }
+
+    function applyDiscount() {
+      const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
+      let discountedPrice = currentPrice;
+      if (discountCode === "BF20") {
+        discountedPrice = (currentPrice * 0.8).toFixed(2);
+      }
+      document.getElementById('discounted-price').innerText = discountedPrice + " ر.س";
+    }
+
+    document.getElementById('discount-code').addEventListener('input', applyDiscount);
+
+    function validateDiscountCode() {
+      // فقط تأكد أن السعر بعد الخصم > 0 (أي تم اختيار منتج)
+      if(currentPrice === 0){
+        alert("يرجى اختيار المنتج أولاً");
+        return false;
+      }
+      return true;
     }
   </script>
+</body>
+
+</body>
 
 </body>
 
