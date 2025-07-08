@@ -80,7 +80,71 @@
     });
 </script>
 
-</body>
+</body><div class="top-bar">
+  <span>🚀 خدمة التسليم الفوري</span> • <span>متـواجدين  24   ساعة ✅</span>
+</div>
+
+<style>
+  .top-bar {
+    background: linear-gradient(90deg, #2c2c2c, #1a1a1a);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Cairo', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    animation: slideDown 0.6s ease-out, pulseGlow 2s infinite;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #333;
+  }
+
+  .top-bar span {
+    display: inline-block;
+    animation: floatText 4s ease-in-out infinite;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  @keyframes floatText {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .top-bar {
+      font-size: 13px;
+      padding: 8px 10px;
+    }
+  }
+</style>
+
+
 
     <header id="home">
         <div class="logo">
@@ -298,6 +362,95 @@ function goToCheckout(productId) {
             </div>
         </div>
     </section>
+
+<div class="contact-section">
+  <h3>تواصل معنا</h3>
+  <ul>
+    <li>
+      <a href="https://wa.me/966594610374" target="_blank">
+        <i class="fas fa-brands fa-whatsapp"></i> الواتساب
+      </a>
+    </li>
+ <li>
+        <a href="https://www.tiktok.com/@bfstoree" target="_blank">
+          <i class="fab fa-tiktok"></i> @BFstoree
+        </a>
+      </li>
+ <li>
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shopmanage.host@gmail.com&su=استفسار&body=السلام+عليكم،+لدي+استفسار+بخصوص+المتجر" target="_blank">
+
+    <i class="fas fa-envelope"></i> shopmanage.host@gmail.com
+  </a>
+</li>
+
+  </ul>
+</div>
+
+<!-- الخطوط والأيقونات -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  .contact-section {
+    text-align: right;
+    padding: 30px 20px;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    color: #ededed;
+    
+  }
+
+  .contact-section h3 {
+    font-size: 20px;
+    color: #ffffff;
+    border-right: 3px solid #ffffff;
+    border-radius: 8;
+    padding-right: 10px;
+    margin-bottom: 20px;
+  }
+
+  .contact-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+  }
+
+  .contact-section li {
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .contact-section a {
+    color: #dbdbdb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-section a:hover {
+    color: #007bff;
+  }
+
+  .contact-section i {
+    margin-left: 8px;
+    font-size: 18px;
+  }
+
+  @media (max-width: 600px) {
+    .contact-section {
+      text-align: center;
+    }
+
+    .contact-section h3 {
+      text-align: center;
+      border: none;
+        margin-top: 20px;
+    }
+
+    .contact-section i {
+      margin: 0 5px;
+    }
+  }
+</style>
 
 
     <footer>
