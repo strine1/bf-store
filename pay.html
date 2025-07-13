@@ -39,6 +39,7 @@
       <option value="odensword--35-SAR">سيوف اودن</option>
       <option value="FoxLamp--38-SAR">سيوف ياماتو</option>
       <option value="acaountbloxfruit--28-SAR"> حساب بلوكس فروت</option>
+      <option value="Godhuman--46-SAR">أسلوب القود هيومن</option>
     </select><br><br>
 
 
@@ -77,11 +78,12 @@
 
   function applyDiscount(reset = false) {
     const prices = {
-      "trail-v4--42-SAR": 42,
+      "trail-v4--42-SAR": 49,
       "awakenFruit--30-SAR": 30,
       "odensword--35-SAR": 35,
       "FoxLamp--38-SAR": 38,
-      "acaountbloxfruit--28-SAR": 28
+      "acaountbloxfruit--28-SAR": 28,
+      "Godhuman--46-SAR" : 46
     };
     const productSelect = document.getElementById('product');
     const productValue = productSelect.value;
@@ -138,11 +140,12 @@
     function updatePrice() {
       const product = document.getElementById('product').value;
       const prices = {
-        "trail-v4--42-SAR": 42,
+        "trail-v4--42-SAR": 49,
         "awakenFruit--30-SAR": 30,
         "odensword--35-SAR": 35,
         "FoxLamp--38-SAR": 38,
-        "acaountbloxfruit--28-SAR": 28
+        "acaountbloxfruit--28-SAR": 28,
+        "Godhuman--46-SAR" : 46
       };
       currentPrice = prices[product] || 0;
       document.getElementById('product-price').innerText = currentPrice + " ر.س";
