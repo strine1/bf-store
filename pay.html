@@ -30,11 +30,11 @@
     <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد من صحة البريد الإلكتروني قبل الإرسال!</span><br><br>
 
     <input type="tel" name="phone" placeholder="أدخل رقم جوالك " pattern="[0-9]{10}" required><br>
-    <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد أن الرقم يبدأ بـ05 ويتكون من 10 أرقام</span><br><br>
+    <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد أن الرقم يتكون من 10 أرقام</span><br><br>
 
     <select name="product" id="product" onchange="updatePrice()" required>
       <option disabled selected>اختر المنتج</option>
-      <option value="trail-v4--42-SAR">تريل v4</option>
+      <option value="trail-v4--49-SAR">تريل v4</option>
       <option value="awakenFruit--30-SAR">إيقاض فاكة</option>
       <option value="odensword--35-SAR">سيوف اودن</option>
       <option value="FoxLamp--38-SAR">سيوف ياماتو</option>
@@ -57,7 +57,7 @@
 
 <!-- وصف الخصم -->
 <small style="font-size: 14px; color: green; display: block; margin-top: 8px;">
-  كود خصم: يوجد كود خصم الآن، إذا تريد الحصول عليه تواصل معنا في التيكتوك أو الواتساب (خصم 20%)
+    ملاحظة : يوجد كود خصم الآن، إذا تريد الحصول عليه تواصل معنا في التيكتوك أو الواتساب (خصم 20%)
 </small>
 
 
@@ -112,10 +112,10 @@
 
     <input type="file" name="receipt" accept="image/*" required onchange="previewImage(event)">
     <img id="preview" style="display:none; max-width: 100%; margin-top: 10px;" />
-    <span style="font-size: 14px; color: #555;">يرجى إرفاق صورة إيصال الحوالة (صورة فقط)</span><br><br>
+    <span style="font-size: 14px; color: #555;">يرجى إرفاق صورة إيصال الحوالة (صورة فقط) مع التأكد من تحويل المبلغ المطلوب بالكامل.</span><br><br>
 
-    <span>💰 السعر: <span id="product-price">-- ر.س</span></span><br>
-    <span>💸 السعر بعد الخصم:  <span  id="discounted-price" >-- ر.س</span></span><br><br>
+    <span>💰 السعر: <span id="product-price">-- ريال سعودي</span></span><br>
+    <span>💸 السعر بعد الخصم:  <span  id="discounted-price" >-- ريال سعودي</span></span><br><br>
 
     <input type="hidden" name="_captcha" value="false" />
     <input type="hidden" name="_next" value="https://strine1.github.io/-/d" />
