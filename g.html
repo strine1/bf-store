@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>زر دائري مع إطار وأزرار تفاعلية</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center h-screen">
+  <div id="mainButtonContainer"></div>
+  <div id="frame" class="hidden absolute bg-gray-800 p-4 rounded-lg shadow-lg w-64">
+    <button id="btn1" class="w-full mb-2 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">تفعيل NV</button>
+    <button id="btn2" class="w-full mb-2 bg-green-500 hover:bg-green-600 text-white py-2 rounded">إضافة Title</button>
+    <button id="btn3" class="w-full mb-2 bg-purple-500 hover:bg-purple-600 text-white py-2 rounded">تغيير السكن</button>
+    <button id="btn4" class="w-full mb-2 bg-cyan-500 hover:bg-cyan-600 text-white py-2 rounded">إضافة ثلج</button>
+    <button id="btn5" class="w-full mb-2 bg-red-500 hover:bg-red-600 text-white py-2 rounded">إضافة نار</button>
+  </div>
+
+  <style>
+    .snow-effect {
+      background: url('https://www.transparenttextures.com/patterns/snow.png');
+      animation: snowFall 10s linear infinite;
+    }
+    @keyframes snowFall {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100px; }
+    }
+    .fire-effect {
+      background: linear-gradient(45deg, red, orange);
+      animation: fireFlicker 0.5s ease-in-out infinite alternate;
+    }
+    @keyframes fireFlicker {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+    .nv-mode {
+      filter: invert(1) hue-rotate(180deg);
+    }
+  </style>
+
+  <script>
+    let frameVisible = false;
+    let nvActive = false;
+    let snowActive = false;
+    let fireActive = false;
+
+    function setup() {
+      let canvas = createCanvas(100, 100);
+      canvas.parent('mainButtonContainer');
+      canvas.mousePressed(toggleFrame);
+    }
+
+    function draw() {
+      clear();
+      let angle = frameCount * 0.05;
+      let radius = 40;
+      let cx = width / 2;
+      let cy = height / 2;
+
+      // Draw spinning stroke
+      stroke(255);
+      strokeWeight(4);
+      noFill();
+      arc(cx, cy, radius * 2, radius * 2, angle, angle + PI / 2);
+      arc(cx, cy, radius * 2, radius * 2, angle + PI, angle + PI + PI / 2);
+    }
+
+    function toggleFrame() {
+      frameVisible = !frameVisible;
+      document.getElementById('frame').classList.toggle('hidden', !frameVisible);
+    }
+
+    document.getElementById('btn1').addEventListener('click', () => {
+      nvActive = !nvActive;
+      document.body.classList.toggle('nv-mode', nvActive);
+      document.getElementById('btn1').textContent = nvActive ? 'إلغاء NV' : 'تفعيل NV';
+    });
+
+    document.getElementById('btn2').addEventListener('click', () => {
+      let color = prompt('أدخل لون الـ Title (مثل red, blue, #FF0000):', '#FFFFFF');
+      if (color) {
+        let currentTitle = document.getElementById('btn2').getAttribute('title') || '';
+        if (currentTitle) {
+          document.getElementById('btn2').removeAttribute('title');
+          document.getElementById('btn2').textContent = 'إضافة Title';
+        } else {
+          document.getElementById('btn2').setAttribute('title', 'عنوان مخصص');
+          document.getElementById('btn2').style.color = color;
+          document.getElementById('btn2').textContent = 'إلغاء Title';
+        }
+      }
+    });
+
+    document.getElementById('btn3').addEventListener('click', () => {
+      let username = prompt('أدخل اسم المستخدم:', '');
+      if (username) {
+        let currentSkin = document.getElementById('frame').style.backgroundImage;
+        if (currentSkin) {
+          document.getElementById('frame').style.backgroundImage = '';
+          document.getElementById('btn3').textContent = 'تغيير السكن';
+        } else {
+          document.getElementById('frame').style.backgroundImage = `linear-gradient(45deg, ${randomColor()}, ${randomColor()})`;
+          document.getElementById('btn3').textContent = `سكن ${username}`;
+        }
+      }
+    });
+
+    document.getElementById('btn4').addEventListener('click', () => {
+      snowActive = !snowActive;
+      document.getElementById('frame').classList.toggle('snow-effect', snowActive);
+      document.getElementById('btn4').textContent = snowActive ? 'إلغاء الثلج' : 'إضافة ثلج';
+    });
+
+    document.getElementById('btn5').addEventListener('click', () => {
+      fireActive = !fireActive;
+      document.getElementById('frame').classList.toggle('fire-effect', fireActive);
+      document.getElementById('btn5').textContent = fireActive ? 'إلغاء النار' : 'إضافة نار';
+    });
+
+    function randomColor() {
+      return '#' + Math.floor(Math.random()*16777215).toString(16);
+    }
+  </script>
+</body>
+</html>
