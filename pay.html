@@ -57,7 +57,7 @@
 
 <!-- وصف الخصم -->
 <small style="font-size: 14px; color: green; display: block; margin-top: 8px;">
-    ملاحظة : يوجد كود خصم الآن، إذا تريد الحصول عليه تواصل معنا في التيكتوك أو الواتساب (خصم 20%)
+    ملاحظة : يوجد كود خصم الآن، إذا تريد الحصول عليه تواصل معنا في التيكتوك أو الواتساب (خصم 10%)
 </small>
 
 
@@ -65,9 +65,9 @@
   function checkDiscountCode() {
     const input = document.getElementById('discount-code').value.trim().toUpperCase();
     const messageEl = document.getElementById('discount-message');
-    if(input === "BF20") {
+    if(input === "BF-10") {
       messageEl.style.color = "green";
-      messageEl.innerText = "✅ تم قبول الكود! تم تطبيق خصم 20%.";
+      messageEl.innerText = "✅ تم قبول الكود! تم تطبيق خصم 10%.";
       applyDiscount();
     } else {
       messageEl.style.color = "red";
@@ -95,8 +95,8 @@
       discountedPrice = currentPrice;
     } else {
       const codeInput = document.getElementById('discount-code').value.trim().toUpperCase();
-      if(codeInput === "BF20") {
-        discountedPrice = (currentPrice * 0.8).toFixed(2);
+      if(codeInput === "BF-10") {
+        discountedPrice = (currentPrice * 0.9).toFixed(2);
       }
     }
 
@@ -155,8 +155,8 @@
     function applyDiscount() {
       const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
       let discountedPrice = currentPrice;
-      if (discountCode === "BF20") {
-        discountedPrice = (currentPrice * 0.8).toFixed(2);
+      if (discountCode === "BF-10") {
+        discountedPrice = (currentPrice * 0.9).toFixed(2);
       }
       document.getElementById('discounted-price').innerText = discountedPrice + " ر.س";
     }
