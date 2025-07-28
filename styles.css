@@ -344,13 +344,13 @@ img, video {
 
 
 .add-to-cart {
-  background: linear-gradient(45deg, #2d2d2d, #d4d4d4);
+  background: linear-gradient(45deg, #00b894, #00cec9);
   color: #fff;
   border: none;
-  padding: 15px 22px;
+  padding: 15px 36px;
   font-size: 20px;
   font-weight: bold;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   max-width: 150px; /* تحديد أقصى عرض للزر */
@@ -358,7 +358,7 @@ img, video {
   transition: background 0.3s, transform 0.2s;
 }
 .add-to-cart:hover {
-  background: linear-gradient(45deg, #d4d4d4, #2d2d2d);
+  background: linear-gradient(45deg, #00cec9, #00b894);
   transform: scale(1.1);
 }
 

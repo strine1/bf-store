@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>صفحة الدفع - BF STORE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="cart1.png" type="image/x-icon" />
+  <style>
+    body {
+      direction: rtl;
+      font-family: 'Tahoma', sans-serif;
+      background-color: #f8f8f8;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .payment-options {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .option-box {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .option-box:hover {
+      background-color: #f0f0f0;
+    }
+
+    .option-box input {
+      margin-left: 15px;
+      transform: scale(1.4);
+      accent-color: #00b894;
+    }
+
+    .option-box img {
+      width: 35px;
+      margin-left: 10px;
+    }
+
+    .note {
+      background-color: #fffae6;
+      border: 1px solid #f5d76e;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 25px;
+      color: #333;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    #confirm-btn {
+      display: none;
+      padding: 14px 30px;
+      margin-top: 25px;
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+
+    #confirm-btn:hover {
+      background: linear-gradient(135deg, #019875, #01a3a4);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="payment-options">
+      <h2>اختر طريقة الدفع</h2>
+
+      <label class="option-box">
+        <input type="radio" name="payment" value="card" onchange="showButton()" />
+        <img src="mada.png" alt="مدى" />
+        <img src="visa.png" alt="Visa" />
+        <img src="mastercard.png" alt="MasterCard" />
+        <img src="applepay.png" alt="Apple Pay" />
+   
+      </label>
+
+      <label class="option-box">
+        <input type="radio" name="payment" value="bank" onchange="showButton()" />
+        <img src="bank.png" alt="تحويل بنكي" />
+        <span>تحويل بنكي </span>
+      </label>
+
+      <div class="note">
+        ✅ جميع منتجاتنا مضمونة 100%، وفي حال حدوث أي مشكلة يتم تعويضك أو استرداد المبلغ.<br /><br />
+        ⏳ بعد الدفع، سيتم تجهيز طلبك خلال دقائق وإرساله لك فوراً عبر الواتساب أو البريد الإلكتروني.<br /><br />
+        🎁 العروض متاحة لفترة محدودة فقط – لا تفوت الفرصة!
+      </div>
+
+      <button id="confirm-btn" onclick="confirmSelection()">تأكيد الاختيار</button>
+    </section>
+  </main>
+
+  <script>
+    function showButton() {
+      document.getElementById("confirm-btn").style.display = "block";
+    }
+
+    function confirmSelection() {
+  const selected = document.querySelector('input[name="payment"]:checked');
+  if (selected) {
+    if (selected.value === "card") {
+      window.location.href = "https://payment.paylink.sa/pay/product/22157341000149316"; // 🔗 رابط بوابة الدفع الإلكتروني الحقيقي
+    } else if (selected.value === "bank") {
+      window.location.href = "pay3.html"; // صفحة التحويل البنكي داخل موقعك
+    }
+  } else {
+    alert("يرجى اختيار طريقة الدفع أولاً");
+  }
+}
+
+  </script>
+</body>
+</html>

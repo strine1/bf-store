@@ -99,7 +99,7 @@
     }
 
     body {
-      background: linear-gradient(-45deg, #0c2429, #abdfff, #4c4c4c, #2398eb);
+      background: linear-gradient(-45deg, #0c2429, #abdfff, #4c4c4c, #48b3ff);
       background-size: 400% 400%;
       animation: gradientBG 10s ease infinite;
       min-height: 100vh;
@@ -187,39 +187,54 @@
     }
 
 
+  .welcome-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: fadeOut 1s ease-in-out 2.8s forwards; /* إخفاء بعد الاتساع */
+  }
 
-    .welcome-screen {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(22, 22, 22, 0.651);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-.welcome-image {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  clip-path: inset(0 0 0 0);
-  transition: clip-path 1.8s ease-in-out;
-}
-.welcome-image.open {
-  clip-path: inset(0 50% 0 50%);
-}
+  .welcome-circle {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    clip-path: circle(0% at 50% 50%);
+    animation: expandCircle 2.5s ease-out forwards;
+  }
 
+  @keyframes expandCircle {
+    0% {
+      clip-path: circle(0% at 50% 50%);
+      transform: scale(1.05);
+    }
+    100% {
+      clip-path: circle(150% at 50% 50%);
+      transform: scale(1);
+    }
+  }
 
-  </style>
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+</style>
 </head>
 <body>
 
 <!-- شاشة الترحيب -->
 <div class="welcome-screen">
-  <img src="startGui.png" class="welcome-image" alt="start">
+  <img src="startGui.gif" class="welcome-circle" alt="start">
 </div>
+
 
 
 <style>
@@ -317,9 +332,9 @@
       </div>
     </a>
 
-    <a href="steelbrainrot.html" target="_blank" >
+    <a href="Discordsection.html" target="_blank" >
       <div class="card">
-        <img src="steelSection.gif" alt="Steel brainrot">
+        <img src="des-section.gif" alt="Steel brainrot">
         
       </div>
     </a>

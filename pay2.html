@@ -35,10 +35,11 @@
     <select name="product" id="product" onchange="updatePrice()" required>
       <option disabled selected>اختر المنتج</option>
   
-      <option value="icon-move--28-SAR">تصميم شعار متحرك</option>
-      <option value="icon--15-SAR">تصميم شعار</option>
-      <option value="discord-server-30-SAR">تصميم سيرفر الديسكورد</option>
-      <option value="user-47rf-35-SAR">يوزر رباعي</option>
+      <option value="تصميم شعار متحرك--28-SAR">تصميم شعار متحرك</option>
+      <option value="تصميم شعار--15-SAR">تصميم شعار</option>
+      <option value="35-SAR-منتاج فيديو طويل">منتاج فيديو طويل</option>
+      <option value="20-SAR-منتاج فيديو شورتس">منتاج فيديو شورتس</option>
+      <option value="10-SAR-صورة مصغرة">صورة مصغرة</option>
     </select><br><br>
 
 
@@ -77,10 +78,11 @@
 
   function applyDiscount(reset = false) {
     const prices = {
-      "icon-move--28-SAR": 28,
-      "icon--15-SAR": 15,
-      "discord-server-30-SAR": 30,
-      "user-47rf-35-SAR": 35
+      "تصميم شعار متحرك--28": 28,
+      "تصميم شعار--15-SAR": 15,
+      "35-SAR-منتاج فيديو طويل": 35,
+      "20-SAR-منتاج فيديو شورتس": 20,
+      "10-SAR-صورة مصغرة": 10
     };
     const productSelect = document.getElementById('product');
     const productValue = productSelect.value;
@@ -137,10 +139,11 @@
     function updatePrice() {
       const product = document.getElementById('product').value;
       const prices = {
-        "icon-move--28-SAR": 28,
-        "icon--15-SAR": 15,
-        "discord-server-30-SAR": 30,
-        "user-47rf-35-SAR": 35
+        "تصميم شعار متحرك--SAR-28": 28,
+        "صميم شعار--15-SAR": 15,
+        "35-SAR-منتاج فيديو طويل": 35,
+        "20-SAR-منتاج فيديو شورتس": 20,
+        "10-SAR-صورة مصغرة": 10
       };
       currentPrice = prices[product] || 0;
       document.getElementById('product-price').innerText = currentPrice + " ر.س";
