@@ -338,12 +338,13 @@ img, video {
 }
 
 footer  {
-  background-color: #2d2d2d;
+   background-color: #2d2d2d;
   color: #ffffff;
   text-align:center;
   padding: 20px;
   margin-top: 270px;
   font-size: 20px;
+  font-family: 'Cairo', sans-serif;
 }
 /* إخفاء الأقسام في البداية */
 section {
