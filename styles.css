@@ -95,7 +95,7 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, #2d2d2d, #2a2a2a,#2d2d2d);
+  background: linear-gradient(135deg, #2d2d2d, #303030,#2d2d2d);
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -161,42 +161,17 @@ header .logo h1 {
 
 /* تنسيق شريط التنقل */
 nav {
-  background: #373737; /* لون الخلفية */
-  padding: 15px 0; /* مسافة داخلية علوية وسفلية */
-  text-align: center; /* توسيط العناصر */
-  border-radius: 14px;
+
+  padding: 10px 0; /* مسافة داخلية علوية وسفلية */
+
   margin-top: 12px;
 }
 
 nav ul {
-  list-style: none; /* إزالة النقاط */
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center; /* محاذاة العناصر وسط الصفحة */
+
   gap: 20px; /* مسافة بين العناصر */
 }
-
-nav ul li {
-  display: inline-block;
-}
-
-nav ul li a {
-  color: rgb(255, 255, 255); /* لون النص */
-  text-decoration: none; /* إزالة الخط السفلي */
-  font-size: 18px; /* حجم النص */
-  font-weight: bold;
-  padding: 10px 20px; /* مساحة داخلية */
-  border-radius: 9px; /* تدوير الحواف */
-  transition: background 0.7s ease-in-out, color 0.3s ease-in-out;
-}
-
-/* تأثير عند تمرير الماوس */
-nav ul li a:hover {
-  background: #222222; /* لون مميز عند التمرير */
-  color: rgb(255, 255, 255); /* تغيير لون النص */
-
-}.login-container {
+.login-container {
   position: absolute;
   top: 10px;
   right: 20px;
@@ -391,7 +366,8 @@ section.show {
   margin-top: 16px;
   border-radius: 24px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease; /* إضافة تأثير للسحب والتكبير عند مرور المؤشر */
+   font-family: 'Cairo', sans-serif;
+   /* إضافة تأثير للسحب والتكبير عند مرور المؤشر */
 }
 
 
@@ -399,20 +375,16 @@ section.show {
 .about-section p {
   font-family: 'Creepster', cursive; /* اختيار خط يشبه الكتابة بالدم */
   font-size: 20px;
-  color: #8B0000;  /* لون دموي داكن */
+  color: #303030;  /* لون دموي داكن */
   text-align: center;
+   font-family: 'Cairo', sans-serif;
    /* تدرج لوني يشبه الدم */
 /* جعل النص شفافًا ليظهر التدرج */
-  text-shadow: 4px 4px 8px rgba(139, 0, 0, 0.5); /* إضافة ظل للنص لإعطاء تأثير الدم */
+  text-shadow: 4px 4px 8px rgba(145, 255, 255, 0.5); /* إضافة ظل للنص لإعطاء تأثير الدم */
   padding: 20px;
 }
   @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
 
-.about-section:hover{
-  
-  transform: scale(1.1); /* تكبير بسيط */
-
-}
 
 @keyframes typing {
   from { width: 0 }
@@ -426,6 +398,7 @@ section.show {
 
 /* قسم .about-section_shop */
 .about-section_shop {
+   font-family: 'Cairo', sans-serif;
   background: white;
   padding: 40px;
   text-align: center;
@@ -473,7 +446,7 @@ section.show {
   border-radius: 24px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.4s ease; /* إضافة تأثير للسحب عند مرور المؤشر */
-
+ font-family: 'Cairo', sans-serif;
 }
 
 .games-section h2 {
@@ -526,8 +499,5 @@ section.show {
 }
 
 
-footer :hover {
-  text-decoration: underline;
- 
-}
+
 
