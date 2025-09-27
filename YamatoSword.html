@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="cart1.png" type="image/x-icon" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
     body {
       direction: rtl;
-      font-family: 'Tahoma', sans-serif;
+      font-family: 'Cairo', sans-serif;
       background-color: #f8f8f8;
       padding: 30px;
     }
@@ -37,11 +39,10 @@
       align-items: center;
       cursor: pointer;
       transition: 0.3s;
+      gap: 10px;
     }
 
-    .option-box:hover {
-      background-color: #f0f0f0;
-    }
+    .option-box:hover { background-color: #f0f0f0; }
 
     .option-box input {
       margin-left: 15px;
@@ -49,9 +50,17 @@
       accent-color: #00b894;
     }
 
-    .option-box img {
-      width: 35px;
-      margin-left: 10px;
+    .option-box img { width: 35px; }
+
+    /* عبارة "موقّف مؤقتًا" */
+    .badge-stop {
+      background: #ffe3e3;
+      color: #c0392b;
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: auto;
     }
 
     .note {
@@ -78,9 +87,45 @@
       width: 100%;
       transition: background 0.3s ease;
     }
+    #confirm-btn:hover { background: linear-gradient(135deg, #019875, #01a3a4); }
 
-    #confirm-btn:hover {
-      background: linear-gradient(135deg, #019875, #01a3a4);
+    /* رسالة */
+    .error-message {
+      position: fixed;
+      top: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      background: #e74c3c;
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(0,0,0,0.25);
+      z-index: 9999;
+      animation: slideDown 0.4s ease forwards;
+    }
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateX(50%) translateY(-40px);}
+      to   {opacity: 1; transform: translateX(50%) translateY(0);}
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.6);
+      margin-top: 8px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar div {
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,0.25);
+      animation: progress 2.5s linear forwards;
+    }
+    @keyframes progress {
+      from {width: 100%;}
+      to   {width: 0%;}
     }
   </style>
 </head>
@@ -89,25 +134,27 @@
     <section class="payment-options">
       <h2>اختر طريقة الدفع</h2>
 
+      <!-- طريقة البطاقة (موقفة) -->
       <label class="option-box">
         <input type="radio" name="payment" value="card" onchange="showButton()" />
         <img src="mada.png" alt="مدى" />
         <img src="visa.png" alt="Visa" />
         <img src="mastercard.png" alt="MasterCard" />
         <img src="applepay.png" alt="Apple Pay" />
-        
+        <span class="badge-stop">موقّف مؤقتًا</span>
       </label>
 
+      <!-- التحويل البنكي -->
       <label class="option-box">
         <input type="radio" name="payment" value="bank" onchange="showButton()" />
         <img src="bank.png" alt="تحويل بنكي" />
-        <span>تحويل بنكي </span>
+        <span>تحويل بنكي</span>
       </label>
 
       <div class="note">
         ✅ جميع منتجاتنا مضمونة 100%، وفي حال حدوث أي مشكلة يتم تعويضك أو استرداد المبلغ.<br /><br />
-        ⏳ بعد الدفع، سيتم تجهيز طلبك خلال دقائق وإرساله لك فوراً عبر الواتساب أو البريد الإلكتروني.<br /><br />
-        🎁 العروض متاحة لفترة محدودة فقط – لا تفوت الفرصة!
+        ⏳ بعد الدفع، سيتم تجهيز طلبك خلال دقائق وإرساله لك فورًا عبر الواتساب أو البريد الإلكتروني.<br /><br />
+        🎁 العروض متاحة لفترة محدودة فقط – لا تفوّت الفرصة!
       </div>
 
       <button id="confirm-btn" onclick="confirmSelection()">تأكيد الاختيار</button>
@@ -120,18 +167,32 @@
     }
 
     function confirmSelection() {
-  const selected = document.querySelector('input[name="payment"]:checked');
-  if (selected) {
-    if (selected.value === "card") {
-      window.location.href = "https://payment.paylink.sa/pay/product/22143721000149316"; // 🔗 رابط بوابة الدفع الإلكتروني الحقيقي
-    } else if (selected.value === "bank") {
-      window.location.href = "pay.html"; // صفحة التحويل البنكي داخل موقعك
+      const selected = document.querySelector('input[name="payment"]:checked');
+      if (selected) {
+        if (selected.value === "card") {
+          // فقط رسالة
+          showErrorMessage("🚫 هذه الطريقة غير مفعلة حاليًا – يرجى اختيار التحويل البنكي لأنه متاح حاليًا ✅");
+        } else if (selected.value === "bank") {
+          // يوجه لصفحة التحويل
+          window.location.href = "pay.html";
+        }
+      } else {
+        alert("يرجى اختيار طريقة الدفع أولاً");
+      }
     }
-  } else {
-    alert("يرجى اختيار طريقة الدفع أولاً");
-  }
-}
 
+    function showErrorMessage(msg) {
+      const div = document.createElement("div");
+      div.className = "error-message";
+      div.innerHTML = msg + '<div class="progress-bar"><div></div></div>';
+      document.body.appendChild(div);
+
+      setTimeout(() => {
+        div.style.opacity = "0";
+        div.style.transition = "0.5s";
+        setTimeout(() => div.remove(), 500);
+      }, 2500);
+    }
   </script>
 </body>
 </html>
