@@ -28,11 +28,21 @@ document.addEventListener("DOMContentLoaded", function() {
         this.lift = -5;
         this.velocity = 0;
 
-        // رسم الطائر
-        this.draw = function() {
-            ctx.fillStyle = "#ffeb3b";  // لون الطائر أصفر
-            ctx.fillRect(this.x, this.y, this.width, this.height);
-        };
+     this.draw = function() {
+    const img = new Image();
+    img.src = "game2.png"; // غيرها لاسم أو رابط صورتك
+
+    // خلي الطائر أكبر بنسبة معينة (مثلاً 1.5 مرة)
+    const scale = 2;
+
+    ctx.drawImage(
+        img,
+        this.x,
+        this.y,
+        this.width * scale,   // تكبير العرض
+        this.height * scale   // تكبير الارتفاع
+    );
+};
 
         // تحديث موقع الطائر
         this.update = function() {

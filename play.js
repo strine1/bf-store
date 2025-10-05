@@ -3,7 +3,7 @@ let attempts = 0;
 let maxAttempts = 8;  // الحد الأقصى للمحاولات
 let timeLimit = 90;   // المدة الزمنية المحددة 90 ثانية
 let timerInterval;
-let soundCorrect = new Audio('sounds/c.mp3');
+let soundCorrect = new Audio('c.mp3');
 let soundWrong = new Audio('sounds/w2rong.mp3');
 
 function startGame() {
@@ -46,11 +46,11 @@ function checkGuess() {
         clearInterval(timerInterval); // إيقاف المؤقت عند الفوز
     } else if (userInput > randomNumber) {
         soundWrong.play();
-        document.getElementById('resultMessage').textContent = `الرقم الذي أدخلته أكبر من الرقم الصحيح!, حاول الرقم أصغر من ${userInput}.`;
+        document.getElementById('resultMessage').textContent = ` حاول الرقم أصغر من ${userInput}.`;
         document.getElementById('resultMessage').style.color = 'red';
     } else if (userInput < randomNumber) {
         soundWrong.play();
-        document.getElementById('resultMessage').textContent = `الرقم الذي أدخلته أصغر من الرقم الصحيح!, حاول الرقم أكبر من ${userInput}.`;
+        document.getElementById('resultMessage').textContent = ` حاول الرقم أكبر من ${userInput}.`;
         document.getElementById('resultMessage').style.color = 'red';
     }
 
