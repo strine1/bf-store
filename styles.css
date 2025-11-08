@@ -228,23 +228,52 @@ main {
   padding: 20px;
 }
 
-
 .product {
+  position: relative;
   width: 100%;
-  max-width: 320px; /* الحد الأقصى للعرض */
+  max-width: 320px;
   text-align: center;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background: #262b3700;
+  border-radius: 15px;
   padding: 15px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  z-index: 0;
   transition: transform 0.3s ease-in-out;
- flex: 1 1 calc(33.33% - 20px); /* لضبط 3 منتجات في كل صف */
-
+  border: 4px solid #ddd; /* الستروك الثابت */
 }
+
+/* اللون الأفتح يدور حول الحواف */
+.product::before {
+  content: '';
+  position: absolute;
+  inset: -333px;
+  border-radius: 14px;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    #333a4a,
+    transparent 30%
+  );
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+/* تأثير الدوران */
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.product:hover {
+  transform: scale(1.03);
+}
+
+
 
 img, video {
   max-width: 100%;
@@ -281,7 +310,7 @@ img, video {
 .product h2 {
 
   font-size: 24px;
-  color: #272626;
+  color: #ffffff;
 }
 
 .product  h6 {
@@ -290,7 +319,7 @@ img, video {
   margin: 10px 0;
 }
 .product p {
-  color: #5e5d5d;
+  color: #c4c4c4;
   font-size: 16px;
   margin: 10px 0;
 }
@@ -301,7 +330,7 @@ img, video {
   font-size: 18px;
   font-weight: bold;
   color: #333;
-  background: #f8f8f8;
+  background: #242424;
   padding: 10px 15px;
   border-radius: 6px;
   border: 1px solid #363535;
@@ -371,6 +400,18 @@ section.show {
    /* إضافة تأثير للسحب والتكبير عند مرور المؤشر */
 }
 
+/* قسم .about-section */
+.about-section_shop {
+  background: white;
+  padding: 40px;
+  text-align: center;
+  margin-top: 16px;
+  border-radius: 24px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+   font-family: 'Cairo', sans-serif;
+   /* إضافة تأثير للسحب والتكبير عند مرور المؤشر */
+}
+
 
 /* تأثيرات النص داخل .about-section */
 .about-section p {
@@ -398,17 +439,8 @@ section.show {
 
 
 /* قسم .about-section_shop */
-.about-section_shop {
-   font-family: 'Cairo', sans-serif;
-  background: white;
-  padding: 40px;
-  text-align: center;
-  margin-top: 20px;
-  border-radius: 24px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.4s ease; /* إضافة تأثير للسحب عند مرور المؤشر */
-  
-}
+
+
 
 .about-section_shop:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* تأثير الظل عند مرور المؤشر */
@@ -448,6 +480,7 @@ section.show {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.4s ease; /* إضافة تأثير للسحب عند مرور المؤشر */
  font-family: 'Cairo', sans-serif;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 .games-section h2 {

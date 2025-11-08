@@ -33,12 +33,9 @@
     <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد أن الرقم يتكون من 10 أرقام</span><br><br>
 
     <select name="product" id="product" onchange="updatePrice()" required>
-      <option value="trail-v4--49-SAR">تريل v4</option>
-<option value="awakenFruit--30-SAR">إيقاض فاكة</option>
-<option value="odensword--35-SAR">سيوف اودن</option>
-<option value="FoxLamp--38-SAR">سيوف ياماتو</option>
-<option value="acaountbloxfruit--28-SAR">حساب بلوكس فروت عشوائي</option>
-<option value="Godhuman--46-SAR">أسلوب القود هيومن</option>
+      <option disabled selected>اختر المنتج</option>
+<option value="acaountbloxfruit--35-SAR">حساب بلوكس فروت عشوائي</option>
+<option value="LegendaryAccount--279-SAR">حساب بلوكس فروت كل الريسات</option>
     </select><br><br>
 
 
@@ -77,12 +74,8 @@
 
   function applyDiscount(reset = false) {
     const prices = {
-      "trail-v4--49-SAR": 49,
-      "awakenFruit--30-SAR": 30,
-      "odensword--35-SAR": 35,
-      "FoxLamp--38-SAR": 38,
-      "acaountbloxfruit--28-SAR": 28,
-      "Godhuman--46-SAR" : 46
+      "acaountbloxfruit--28-SAR": 35,
+      "LegendAccount--279-SAR" : 279
     };
     const productSelect = document.getElementById('product');
     const productValue = productSelect.value;
@@ -139,12 +132,8 @@
     function updatePrice() {
       const product = document.getElementById('product').value;
       const prices = {
-        "trail-v4--49-SAR": 49,
-        "awakenFruit--30-SAR": 30,
-        "odensword--35-SAR": 35,
-        "FoxLamp--38-SAR": 38,
-        "acaountbloxfruit--28-SAR": 28,
-        "Godhuman--46-SAR" : 46
+        "acaountbloxfruit--35-SAR": 35,
+        "LegendAccount--279-SAR" : 279,
       };
       currentPrice = prices[product] || 0;
       document.getElementById('product-price').innerText = currentPrice + " ر.س";

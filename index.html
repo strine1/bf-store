@@ -1,135 +1,358 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>المتجر تحت الصيانة والتطوير</title>
+  <meta charset="UTF-8">
+  <title>BFstore | بي أف ستور</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="BF-STORE.png" type="image/x-icon">
 
-<link rel="icon" type="image/png" href="BF-STORE.png" sizes="32x32">
-<link rel="apple-touch-icon" href="BF-STORE.png">
-<meta name="theme-color" content="#f9fafb">
-<meta name="msapplication-TileImage" content="BF-STORE.png">
-<meta name="msapplication-TileColor" content="#f9fafb">
+  <!-- 🧠 وصف SEO -->
+  <meta name="description" content="BFstore هو متجر يقدم خدمات ماب Blox Fruits، تصميم فيديو، تصميم شعار، بيع يوزرات ديسكورد رباعية، وتصميم سيرفرات ديسكورد باحترافية.">
+
+  <!-- 🔑 كلمات مفتاحية -->
+  <meta name="keywords" content="BFstore, بلوكس فروت, تصميم شعار, تصميم فيديو, يوزرات ديسكورد, يوزر رباعي, تصميم سيرفر ديسكورد, ماب Blox Fruits, متجر Roblox, خدمات Roblox">
+
+  <meta name="robots" content="index, follow">
+
+  <!-- 🌐 روابط خارجية -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- 🖼️ Open Graph للسوشيال -->
+  <meta property="og:title" content="BFstore | متجر خدمات بلوكس فروت ويوزرات ديسكورد وتصميمات احترافية" />
+  <meta property="og:description" content="خدمات احترافية لماب Blox Fruits، تصميم فيديو وشعار، وبيع يوزرات ديسكورد رباعية، مع تصميم سيرفرات ديسكورد بشكل مميز عبر BFstore.">
+  <meta property="og:image" content="https://strine1.github.io/bf-store/BF-STORE.png" />
+  <meta property="og:url" content="https://strine1.github.io/bf-store/" />
+  <meta property="og:type" content="website" />
+
+  <!-- 📷 دعم Google للصور -->
+  <meta itemprop="image" content="https://strine1.github.io/bf-store/BF-STORE.png">
+
+  <!-- 🐦 دعم تويتر -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BFstore | متجر خدمات بلوكس فروت ويوزرات ديسكورد وتصميمات احترافية">
+  <meta name="twitter:description" content="خدمات بلوكس فروت، تصميم فيديو، تصميم شعار، بيع يوزرات ديسكورد رباعية، وتصميم سيرفرات احترافية.">
+  <meta name="twitter:image" content="https://strine1.github.io/bf-store/BF-STORE.png">
 
 
-<style>
-  :root{
-    --bg:#f9fafb; --card:#ffffff; --fg:#0b0c10; --muted:#4b5563;
-    --g1:#06b6d4; --g2:#3b82f6; --g3:#4fbabc;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    color:var(--fg);
-    background:linear-gradient(180deg, #243243 0%, #2c3b56 100%);
-  }
+<!-- أيقونة WhatsApp ثابتة -->
+<a href="https://wa.me/966594610374" target="_blank" id="whatsapp-icon">
+    <img src="واتساب.png" alt="WhatsApp" />
+</a>
+
+</script>
+
+<script>
+    // دالة لإظهار النص
+    function showText() {
+        const textElement = document.getElementById('whatsapp-text');
+        textElement.style.display = 'block';  // إظهار النص
+
+        // إخفاء النص بعد 5 ثوانٍ
+        setTimeout(function() {
+            textElement.style.display = 'none'; // إخفاء النص
+        }, 11000);  // يبقى النص 5 ثوانٍ فقط
+    }
+
+    // إظهار النص كل 30 ثانية
+    setInterval(showText, 18000); // 30000 ميلي ثانية = 30 ثانية
+</script>
 
 
-  .site-header{
-    position:fixed; inset-inline:0; top:0; height:70px;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 16px; z-index:10;
-    background:linear-gradient(to bottom, #2c3859cc, #22324580);
-    backdrop-filter: blur(8px);
-    border-bottom:1px solid #e5e7eb;
-  }
-  .brand{
-    display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit;
-  }
-  .logo{
-    width:46px; height:46px; border-radius:14px;
-    background:linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
-    display:grid; place-items:center;
-    box-shadow:0 4px 10px #0001, inset 0 0 0 1px #ffffff80;
-  }
-  .logo svg{width:26px; height:26px; opacity:.9}
-  .brand-name{
-    font-weight:800; letter-spacing:.3px;
-    background:linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .tag{font-size:12px; color:var(--muted); padding:.2rem .6rem; border-radius:999px; background:#f3f4f6}
+<!-- النص الذي سيظهر فوق الأيقونة -->
+<div id="whatsapp-text" class="whatsapp-text">
+   👇 لإستلام الطلبات و خدمة العملاء اضغط هنا
+    
+</div>
 
-  .wrap{min-height:100vh; display:grid; place-items:center; padding:110px 16px 40px}
-  .card{
-    width:min(720px, 94vw);
-    background:linear-gradient(180deg, #222632ee, #2b3447dd);
-    border:1px solid #e5e7eb; border-radius:20px; padding:28px 22px;
-    box-shadow:0 10px 30px #00000010, inset 0 0 0 1px #ffffff80;
-    position:relative; overflow:hidden;
+ <script>
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) {  // F12
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl+Shift+I
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {  // Ctrl+Shift+J
+            return false;
+        }
+    }
+</script>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tahoma', sans-serif;
+    }
+
+    body {
+      background: #1f242d;
+      background-size: 400% 400%;
+      animation: gradientBG 8s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding-top: 80px;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffcc00;
+      background-color: #1f242d;
+      padding: 10px 20px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2rem;
+      text-shadow: 0 0 10px #000;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+ .card {
+  background: linear-gradient(45deg, #3a3c45, #444752, #686c82);
+  background-size: 200% 200%;
+  animation: cardBG 4s linear infinite;
+  width: 250px;
+  height: 250px;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+  margin-top: 0px; /* الوضع العادي للجوال */
+}
+
+/* 👇 هذا الجزء يشتغل فقط على الشاشات الأكبر من 768px (يعني تابلت أو كمبيوتر) */
+@media (min-width: 768px) {
+  .card {
+    margin-top: -120px; /* ارفع الكروت فوق فقط على الشاشات الكبيرة */
+  }
+}
+
+
+    @keyframes cardBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+ 
+    a {
+      text-decoration: none;
+    }
+
+
+  .welcome-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: fadeOut 1s ease-in-out 2.8s forwards; /* إخفاء بعد الاتساع */
   }
 
-  .gear{
-    background-color: white;
-    border-radius: 14px;
-    position:absolute; inset:auto -70px -70px auto; width:180px; opacity:.05; pointer-events:none;
-    animation:spin 20s linear infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  .title{
-    margin:6px 0 8px; line-height:1.1;
-    font-size:clamp(22px, 4vw + 8px, 44px); font-weight:900;
-    background:linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .subtitle{color:var(--muted); margin:0 0 18px; font-size:clamp(14px, 1.2vw + 10px, 18px)}
-
-  .store-logo{
-    display:block; margin:0 auto 20px; max-width:160px;
-    border-radius:16px; box-shadow:0 8px 20px #0001;
+  .welcome-circle {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    clip-path: circle(0% at 50% 50%);
+    animation: expandCircle 0.5s ease-out forwards;
   }
 
-  .actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
-  .btn{
-    text-decoration:none; color:#fff; font-weight:700; border-radius:12px; padding:10px 14px;
-    border:0; background:linear-gradient(90deg, var(--g1), var(--g2), var(--g3)); box-shadow:0 4px 14px #0002;
+  @keyframes expandCircle {
+    0% {
+      clip-path: circle(0% at 50% 50%);
+      transform: scale(1.05);
+    }
+    100% {
+      clip-path: circle(150% at 50% 50%);
+      transform: scale(1);
+    }
   }
-  .btn:hover{opacity:.9}
 
-  @media (max-width:540px){.tag{display:none}}
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
 </style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#" aria-label="الصفحة الرئيسية">
-      <div class="logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3v4"></path><path d="M12 17v4"></path>
-          <circle cx="12" cy="12" r="4"></circle>
-        </svg>
-      </div>
-      <div>
-        <div class="brand-name">BF-STORE</div>
-        <div class="tag">تحت الصيانة</div>
+
+<!-- شاشة الترحيب -->
+<div class="welcome-screen">
+  <img src="startbackground.gif" class="welcome-circle" alt="start">
+</div>
+
+
+
+<style>
+
+  .logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.158); /* لمعة خفيفة خلف الشعار */
+    padding: 10px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-container img {
+    max-width: 120px;
+    height: auto;
+  }
+
+  @media (max-width: 600px) {
+    .logo-container {
+      top: 10px;
+      left: 10px;
+      padding: 8px 12px;
+    }
+
+    .logo-container img {
+      max-width: 90px;
+    }
+  }
+</style>
+
+<div class="logo-container">
+  <img src="logo.png" alt="BFstore logo"  draggable="false">
+</div>
+
+
+<style>
+  /* تنسيق الشعار داخل الهيدر */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 20px;
+  }
+
+  header img {
+    width: 90px;
+    max-width: 160px;
+    height: auto;
+    background-color: rgba(54, 54, 54, 0.973); /* خلفية شبه شفافة */
+  border-radius: 8px;
+  padding: 6px;
+  }
+
+  /* تنسيق صورة "اختر القسم" */
+  .choeseSection {
+    width: 250px;
+    max-width: 90%;
+    display: block;
+    margin: 10px auto; /* الوضع الطبيعي للجوال */
+  }
+
+  /* رفع صورة القسم قليلاً على الأجهزة الأكبر من 768px */
+  @media (min-width: 768px) {
+    .choeseSection {
+      margin-top: -20px;
+      margin-bottom: 100px;
+    }
+  }
+</style>
+
+<!-- ✅ HTML -->
+
+
+<img class="choeseSection" src="choeseSection.gif"   alt="اختر القسم"    draggable="false">
+
+
+  <div class="cards">
+    <a href="bloxfruits.html" target="_blank">
+      <div class="card">
+        <img src="BLOXsection.gif" alt="Blox Fruits">
+       
       </div>
     </a>
-  </header>
 
-  <main class="wrap">
-    <section class="card">
-      <svg class="gear" viewBox="0 0 100 100">
-        <g transform="translate(50 50)">
-          <circle r="22" fill="none" stroke="#000" stroke-width="6"/>
-          <g fill="#000">
-            <rect x="-3" y="-40" width="6" height="12" rx="2"/>
-            <rect x="-3" y="28" width="6" height="12" rx="2"/>
-            <rect x="-40" y="-3" width="12" height="6" rx="2"/>
-            <rect x="28" y="-3" width="12" height="6" rx="2"/>
-          </g>
-        </g>
-      </svg>
-
-      <img src="logo.png" alt="شعار المتجر" class="store-logo">
-      <h1 class="title">المتجر تحت الصيانة والتطوير</h1>
-      <p class="subtitle">نقوم بتحديث المتجر وتحسين التجربة لأجلك, نعود قريبًا ✨</p>
-
-      <div class="actions">
-        <a class="btn" href="https://wa.me/966594610374" target="_blank">تواصل واتساب</a>
-        <a class="btn" href="https://mail.google.com/mail/u/0/#inbox?compose=lqrsljbsglNPtJPBLSmLWcFkWgjTSMRjzlvHnzTcPNzhtCwjjZRWRTMGjLjfdxTLxsvBlKjjNWHfPPZGf">راسلنا</a>
+    <a href="desgins.html" target="_blank">
+      <div class="card">
+        <img src="desgin236.gif" alt=" desgins - section">
+        
       </div>
-    </section>
-  </main>
+    </a>
+
+    <a href="Discordsection.html" target="_blank" >
+      <div class="card">
+        <img src="des-section.gif" alt="Steel brainrot">
+        
+      </div>
+    </a>
+  </div>
+  <script>
+  // بعد ثانيتين يبدأ الفتح
+  setTimeout(() => {
+    document.querySelector('.welcome-image').classList.add('open');
+  }, 2000);
+
+  // بعد 4 ثواني تختفي الشاشة
+  setTimeout(() => {
+    document.querySelector('.welcome-screen').style.display = 'none';
+  }, 4000);
+</script>
+
+
 </body>
 </html>
