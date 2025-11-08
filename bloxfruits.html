@@ -272,103 +272,88 @@ nav ul li a:hover {
   object-fit: cover; /* يضمن أن الصورة تمتد إذا احتاجت، مع الحفاظ على نسبة الأبعاد */
 }
 </style>
+<!-- المنتج 1 -->
+<div class="product">
+  <video width="100%" height="auto" autoplay muted loop>
+    <source src="trial.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو.
+  </video>
+  <h2>V4 تريل</h2>
+  <p>نسوي لحسابك تريل ڤي4 فل قير لريس واحد انت تحدده</p>
+  <h6>ريس التنين غير متوفر</h6>
+  <p class="price">
+    السعر:
+    <span class="old-price">69 ر.س</span>
+    <span class="new-price">56 ر.س</span>
+  </p>
+  <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
+</div>
 
-    <div class="product">
-      <video width="100%" height="auto" autoplay muted loop>
-        <source src="trial.mp4" type="video/mp4">
-        متصفحك لا يدعم تشغيل الفيديو.
-      </video>
-      <h2>V4 تريل</h2>
-      <p>نسوي  لحسابك  تريل ڤي4   فل  قير  لريس  واحد  انت   تحدده</p>
-      <h6>ريس التنين غير متوفر</h6>
-      <p class="price">
-        السعر:
-        <span class="old-price">69 ر.س</span>
-        <span class="new-price">56 ر.س</span>
-      </p>
-    <button class="add-to-cart" onclick="orderNow()">أطلب الآن</button>
+<!-- المنتج 2 -->
+<div class="product">
+  <video width="100%" height="auto" preload="auto" muted autoplay loop>
+    <source src="awaken.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو.
+  </video>
+  <h2>إيقاض فاكهة</h2>
+  <p>نسوي لحسابك إيقاض لأي فاكة تحددها انت رايد كامل</p>
+  <p class="price">
+    السعر:
+    <span class="old-price">42 ر.س</span>
+    <span class="new-price">30 ر.س</span>
+  </p>
+  <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
+</div>
 
+<!-- المنتج 3 -->
+<div class="product">
+  <img src="cdk.png" alt="سيوف أودن" width="100%" height="auto">
+  <h2>سيوف أودن</h2>
+  <p>نجيب لك سيوف اودن وإذا عندك واحد من السيوف نخصم لك نصف القيمة</p>
+  <p class="price">السعر: 42 ر.س</p>
+  <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
+</div>
+
+<!-- المنتج 4 -->
+<div class="product">
+  <img src="FoxLampSword.png" alt="سيف ياماتو" width="100%" height="auto">
+  <h2>سيف ياماتو</h2>
+  <p>نجيب لك سيف ياماتو [الكيتسوني]</p>
+  <p class="price">السعر: 38 ر.س</p>
+  <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
+</div>
+
+<!-- المنتج 5 -->
+<div class="product">
+  <img src="godhuman.png" alt="القود هيومن" width="100%" height="auto">
+  <h2>القود هيومن</h2>
+  <p>نجيب لك في حسابك أسلوب القود هيومن</p>
+  <p class="price">السعر: 46 ر.س</p>
+  <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
+</div>
+
+<!-- ضع السكربت مرة واحدة أسفل الصفحة قبل </body> -->
 <script>
-  function orderNow() {
-    const phone = "0594610374";
-    const message = encodeURIComponent("مرحبًا، أود طلب تريل 👋");
-    window.open(`https://wa.me/966${phone}?text=${message}`, "_blank");
+  // عدّل هنا فقط لو تغيّر رقمك
+  const RAW_PHONE = "0594610374";
+
+  // يحوّل رقم KSA لصيغة دولية صحيحة لواتساب
+  function formatKsaPhone(number) {
+    let n = (number || "").replace(/\D+/g, ""); // يشيل أي رموز/مسافات
+    if (n.startsWith("966")) return n;
+    if (n.startsWith("05")) return "966" + n.slice(1); // 05xxxxxxxx -> 9665xxxxxxxx
+    if (n.startsWith("5")) return "966" + n;           // 5xxxxxxxxx  -> 9665xxxxxxxxx
+    return n; // fallback
+  }
+
+  function orderNow(buttonEl) {
+    const phoneIntl = formatKsaPhone(RAW_PHONE);
+    const productTitle = buttonEl.closest(".product").querySelector("h2")?.innerText?.trim() || "منتج";
+    const message = encodeURIComponent(`مرحبًا، أريد ${productTitle} 👋`);
+    window.open(`https://wa.me/${phoneIntl}?text=${message}`, "_blank");
   }
 </script>
-    </div>
 
-    <div class="product">
-      <video width="100%" height="auto"  preload="auto" muted autoplay loop>
-        <source src="awaken.mp4"  type="video/mp4">
-        متصفحك لا يدعم تشغيل الفيديو.
-      </video>
-      <h2>إيقاض فاكهة</h2>
-      <p>نسوي لحسابك إيقاض لأي فاكة تحددها انت رايد كامل</p>
-      <p class="price">
-        السعر:
-        <span class="old-price">42 ر.س</span>
-        <span class="new-price">30 ر.س</span>
-      </p>
-    <button class="add-to-cart" onclick="orderNow()">أطلب الآن</button>
-
-<script>
-  function orderNow() {
-    const phone = "0594610374";
-    const message = encodeURIComponent("مرحبًا، أود طلب إيقاض فاكهة 👋");
-    window.open(`https://wa.me/966${phone}?text=${message}`, "_blank");
-  }
-</script>
-
-    </div>
-
-    <div class="product">
-      <img src="cdk.png" alt="سيوف أودن" width="100%" height="auto">
-      <h2>سيوف أودن</h2>
-      <p>نجيب لك سيوف اودن وإذا عندك واحد من السيوف نخصم لك نصف القيمة</p>
-      <p class="price">السعر: 42 ر.س</p>
-     <button class="add-to-cart" onclick="orderNow()">أطلب الآن</button>
-
-<script>
-  function orderNow() {
-    const phone = "0594610374";
-    const message = encodeURIComponent("مرحبًا، أود أن احصل على سيوف أودن  👋");
-    window.open(`https://wa.me/966${phone}?text=${message}`, "_blank");
-  }
-</script>
-  
-    </div>
-
-    <div class="product">
-      <img src="FoxLampSword.png" alt="سيف ياماتو" width="100%" height="auto">
-      <h2>سيف ياماتو</h2>
-      <p>نجيب لك سيف ياماتو [الكيتسوني]</p>
-      <p class="price">السعر: 38 ر.س</p>
-     <button class="add-to-cart" onclick="orderNow()">أطلب الآن</button>
-
-<script>
-  function orderNow() {
-    const phone = "0594610374";
-    const message = encodeURIComponent(" مرحبًا، أن احصل على سيف الكيتسوني (ياماتو) 👋");
-    window.open(`https://wa.me/966${phone}?text=${message}`, "_blank");
-  }
-</script>
-     
-    </div>
-
-    <div class="product">
-      <img src="godhuman.png" alt="القود هيومن" width="100%" height="auto">
-      <h2>القود هيومن</h2>
-      <p>نجيب لك في حسابك أسلوب القود هيومن</p>
-      <p class="price">السعر: 46 ر.س</p>
-    <button class="add-to-cart" onclick="orderNow()">أطلب الآن</button>
-
-<script>
-  function orderNow() {
-    const phone = "0594610374";
-    const message = encodeURIComponent("مرحبًا، أود أن احصل على أسلوب القود هيومن 👋");
-    window.open(`https://wa.me/966${phone}?text=${message}`, "_blank");
-  }
-</script>
   
     </div>
 
