@@ -129,16 +129,17 @@
       preview.style.display = 'block';
     }
 
-    function updatePrice() {
-      const product = document.getElementById('product').value;
-      const prices = {
-        "acaountbloxfruit--35-SAR": 35,
-        "LegendAccount--279-SAR" : 279,
-      };
-      currentPrice = prices[product] || 0;
-      document.getElementById('product-price').innerText = currentPrice + " ر.س";
-      applyDiscount();
-    }
+   function updatePrice() {
+  const product = document.getElementById('product').value;
+  const prices = {
+    "acaountbloxfruit--35-SAR": 35,
+    "LegendaryAccount--279-SAR": 279, // هذا اللي يخص كل الريسات
+  };
+  currentPrice = prices[product] || 0;
+  document.getElementById('product-price').innerText = currentPrice + " ر.س";
+  applyDiscount();
+}
+
 
     function applyDiscount() {
       const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
