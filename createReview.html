@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>إضافة تقييم</title>
+  <link rel="icon" href="BF-STORE.png">
+  <style>
+    body{font-family:Cairo, sans-serif;background:#1E1F22;margin:0;padding:20px}
+    .logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  -webkit-user-drag: none; 
+-webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+    .logo img{width:90px;border-radius:10px}
+    .review-box{max-width:420px;margin:100px auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 0 10px #00000015}
+    input,textarea,select,button{width:100%;padding:10px;margin-top:10px;border-radius:6px;border:1px solid #ccc;font-size:15px}
+    button{background:#222;color:#fff;border:none;cursor:pointer}
+    button:hover{background:#444}
+    .error{color:red;text-align:center;margin-top:10px}
+    .success{color:green;text-align:center;margin-top:10px}
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="BF-STORE.png" alt="Logo">
+  </div>
+
+  <div class="review-box">
+    <h2>إضافة تقييم</h2>
+
+    <form id="reviewForm" action="https://formsubmit.co/verify.ark.ai@gmail.com" method="POST">
+      
+      <label>اسمك أو لقبك:</label>
+      <input name="name" id="name" type="text" required>
+
+      <label>عدد النجوم:</label>
+      <select name="stars" id="stars">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+      </select>
+
+      <label>رسالة التقييم:</label>
+      <textarea name="message" id="message" rows="4" required></textarea>
+
+      <label>رقم الطلب:</label>
+      <input name="orderId" id="orderId" type="number" placeholder="أدخل رقم الطلب" required>
+
+      <button type="submit">إرسال التقييم</button>
+
+      <div id="status"></div>
+    </form>
+  </div>
+  
+<script>
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) {  // F12
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl+Shift+I
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {  // Ctrl+Shift+J
+            return false;
+        }
+    }
+</script>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
+
+  <script>
+    const allowedOrder = 5181292347;
+
+    // 🔥 هنا تتحكم يدويًا
+    let orderActive = false;  
+    // خليها false لو تبي توقف التقييم:
+    // let orderActive = false;
+
+    document.getElementById("reviewForm").addEventListener("submit", function(event) {
+      const orderIdInput = Number(document.getElementById("orderId").value);
+      const status = document.getElementById("status");
+      status.innerHTML = "";
+
+      // الرقم غلط
+      if (orderIdInput !== allowedOrder) {
+        event.preventDefault();
+        status.innerHTML = "<p class='error'>رقم الطلب غير صحيح.</p>";
+        return;
+      }
+
+      // الرقم صح بس التقييم مقفل
+      if (!orderActive) {
+        event.preventDefault();
+        status.innerHTML = "<p class='error'>لقد قيمت بالفعل.</p>";
+        return;
+      }
+
+      // الرقم صح والتقييم شغال — يرسل
+      status.innerHTML = "<p class='success'>تم إرسال تقييمك… شكراً لك ❤️</p>";
+    });
+  </script>
+
+</body>
+</html>
