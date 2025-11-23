@@ -377,7 +377,7 @@ nav ul li a:hover {
   function orderNow(buttonEl) {
     const phoneIntl = formatKsaPhone(RAW_PHONE);
     const productTitle = buttonEl.closest(".product").querySelector("h2")?.innerText?.trim() || "منتج";
-    const message = encodeURIComponent(`مرحبًا، أريد ${productTitle} 😁`);
+    const message = encodeURIComponent(`مرحبًا، أريد ${productTitle} :) `);
     window.open(`https://wa.me/${phoneIntl}?text=${message}`, "_blank");
   }
 </script>
