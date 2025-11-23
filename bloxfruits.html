@@ -259,15 +259,39 @@ nav ul li a:hover {
     <main>
   <section id="products" class="product-section">
 
-<div class="product">
+<div class="product out-of-stock">
   <img src="legendaccount1.png" alt="حساب عشوائي" class="product-image">
   <h2>BLOX FRUITS حساب</h2>
   <p>حساب جميع الريسات ڤي4 فل قير ماب بلوكس فروت , شات روبلوكس مفتوح ضمان 100% ,الحساب غير مرتبط بإيميل ويوصلك فوري على البريد والواتساب</p>
   <p class="price">السعر: 279 ر.س</p>
-  <button class="add-to-cart" onclick="location.href='PayOption.html'">اشترِ الآن</button>
+
+  <span class="sold-out">نفذت الكمية</span>
 </div>
 
  <style>
+  .product {
+  position: relative;
+}
+
+.sold-out {
+  display: inline-block;
+ padding: 18px 20px;
+        background: linear-gradient(135deg, #b80000, #f03636);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+        font-family: 'Cairo', sans-serif;
+        cursor: not-allowed;
+}
+
+.out-of-stock .add-to-cart {
+  display: none !important;
+}
+
 
 .product-image {
   width: 100%;
