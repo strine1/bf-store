@@ -256,7 +256,7 @@ nav ul li a:hover {
 
     
   <main>
-  <section id="products" class="product-section">
+ <section id="products" class="product-section">
 
     <div class="product">
       <img src="desgin-icon.gif" width="100%" height="auto">
@@ -268,7 +268,6 @@ nav ul li a:hover {
         <span class="new-price">28 ر.س</span>
       </p>
       <button class="add-to-cart" onclick="location.href='movelogo.html'">اشترِ الآن</button>
-
     </div>
 
     <div class="product">
@@ -277,7 +276,6 @@ nav ul li a:hover {
       <p>نصمم لك شعار مع تحديد الحروف والشكل والألوان على ذوقك</p>
       <p class="price">السعر: 15 ر.س</p>
       <button class="add-to-cart" onclick="location.href='logo15.html'">اشترِ الآن</button>
- 
     </div>
 
     <div class="product">
@@ -286,7 +284,6 @@ nav ul li a:hover {
       <p>منتاج فيديو طويل احترافي لليوتيوب</p>
       <p class="price">السعر: 35 ر.س</p>
       <button class="add-to-cart" onclick="location.href='montagtawoeel.html'">اشترِ الآن</button>
-    
     </div>
 
     <div class="product">
@@ -295,9 +292,7 @@ nav ul li a:hover {
       <p>منتاج فيديو شورتس احترافي لليوتيوب</p>
       <p class="price">السعر: 20 ر.س</p>
       <button class="add-to-cart" onclick="location.href='montagshorts.html'">اشترِ الآن</button>
-
     </div>
-
 
     <div class="product">
       <img src="thumbniledesgin.png" alt="صورة مصغرة" width="100%" height="auto">
@@ -305,8 +300,30 @@ nav ul li a:hover {
       <p>نصمم لك صورة مصغرة (ثمنيل) بجودة عالية واحترافية على حسب الفيديو</p>
       <p class="price">السعر: 10 ر.س</p>
       <button class="add-to-cart" onclick="location.href='tumbnile.html'">اشترِ الآن</button>
-   
     </div>
+
+</section>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.product');
+
+  cards.forEach((card, idx) => {
+    // يبدأ من المنتج الثامن
+    const pageNumber = idx + 8; 
+    const page = `product-${pageNumber}.html`;
+
+    card.addEventListener('click', function(e) {
+      // لو النقر كان على زر — لا نتدخل
+      if (e.target.closest('button') || e.target.closest('a')) return;
+
+      window.location.href = page;
+    });
+
+  });
+})();
+</script>
+
 
   </section>
 </main>
@@ -341,6 +358,7 @@ nav ul li a:hover {
         cursor: pointer;
         margin-top: 10px;
         transition: 0.3s;
+        ;font-family: 'Cairo', sans-serif
       }
       .add-to-cart:hover {
         background: linear-gradient(135deg, #00cec9, #00b894);
@@ -733,18 +751,25 @@ function goToCheckout(productId) {
   <ul>
     <li>
       <a href="https://wa.me/966594610374" target="_blank">
-        <i class="fas fa-brands fa-whatsapp"></i> الواتساب
+        <i class="fas fa-brands fa-whatsapp"></i> واتساب
       </a>
     </li>
  <li>
         <a href="https://www.tiktok.com/@bfstoree" target="_blank">
-          <i class="fab fa-tiktok"></i> @BFstoree
+          <i class="fab fa-tiktok"></i> تيكتوك
         </a>
       </li>
  <li>
+  <a href="https://discord.gg/bNpkwqK2jT" target="_blank">
+
+    <i class="fab fa-discord"></i> ديسكورد
+  </a>
+</li>
+
+ <li>
   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shopmanage.host@gmail.com&su=استفسار&body=السلام+عليكم،+لدي+استفسار+بخصوص+المتجر" target="_blank">
 
-    <i class="fas fa-envelope"></i> shopmanage.host@gmail.com
+    <i class="fas fa-envelope"></i> Email
   </a>
 </li>
 

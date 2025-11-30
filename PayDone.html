@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تم الإرسال</title>
+    <link rel="icon" href="cart2.png" type="image/x-icon">
+    <!-- رابط Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #1e1e1e;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+        }
+        video {
+            width: 100%;
+            border-radius: 12px;
+        }
+        .video-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ffff;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 2px 2px 8px #000;
+        }
+        .instructions {
+            font-size: 22px;
+            color: #ccc;
+            margin-top: 12px;
+            text-align: center;
+            max-width: 600px;
+        }
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .social-icons .icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .social-icons .discord { color: #5865F2; }
+        .social-icons .whatsapp { color: #25D366; }
+        .social-icons .tiktok { color: #fff; }
+        .social-icons .icon:hover {
+            transform: translateY(-6px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background: rgba(255,255,255,0.06);
+        }
+
+    
+    </style>
+</head>
+<body>
+
+  <div class="background">
+        <h1 class="animated-text"> تم إستلام طلبك !  </h1>
+    </div>
+
+<p class="instructions">
+    لاستلام طلبك أرسل لنا رقم طلبك في الواتساب أو الديسكورد،<br>
+    ويرجى العلم بأن رقم الجوال هو رقم الطلب
+</p>
+
+<div class="social-icons">
+    <a href="https://discord.gg/bNpkwqK2jT" class="icon discord" target="_blank">
+        <i class="fab fa-discord"></i>
+    </a>
+    <a href="https://wa.me/966594610374" class="icon whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://tiktok.com/@bfstoree" class="icon tiktok" target="_blank">
+        <i class="fab fa-tiktok"></i>
+    </a>
+</div>
+
+</body>
+</html>

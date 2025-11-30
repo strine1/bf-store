@@ -31,37 +31,189 @@
 <meta name="twitter:description" content="BFstore | خدمات Blox Fruits – منتجات وخدمات الديسكورد – والتصميم الإحترافي.">
 
 
+<!-- رسالة فوق الأيقونات -->
+<div id="whatsapp-text" class="whatsapp-text" aria-hidden="true">
+   👇 لإستلام الطلبات و خدمة العملاء اضغط هنا
+</div>
 
+<!-- الأيقونات (واتساب + ديسكورد) -->
+<div id="social-switch" aria-live="polite">
+    <a id="whatsapp" href="https://wa.me/966594610374" target="_blank" title="واتساب">
+        <img src="واتساب.png" alt="WhatsApp">
+    </a>
 
-<!-- أيقونة WhatsApp ثابتة -->
-<a href="https://wa.me/966594610374" target="_blank" id="whatsapp-icon">
-    <img src="واتساب.png" alt="WhatsApp" />
-</a>
+    <a id="discord" href="https://discord.gg/bNpkwqK2jT" target="_blank" title="ديسكورد">
+        <img src="ديسكورد.png" alt="Discord">
+    </a>
+</div>
 
-</script>
+<style>
+/* ---- الرسالة ---- */
+.whatsapp-text {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: #ff8243;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    display: none; /* تظهر بواسطة الجافاسكربت */
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.18);
+    z-index: 9999;
+    transform-origin: center;
+    white-space: nowrap;
+}
+
+/* ---- مكان الأيقونات ---- */
+#social-switch {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 62px;
+    height: 62px;
+    z-index: 9999;
+    border-radius: 20px;
+}
+
+/* الأيقونات (متمركزة فوق بعض) */
+#social-switch a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 72px;
+    height: 72px;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: visible;
+    text-decoration: none;
+}
+
+/* الصورة داخل الرابط */
+#social-switch a img {
+    width: 72px;
+    height: 72px;
+    display: block;
+    border-radius: 50%;
+    transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms, opacity 700ms ease;
+    transform-origin: center;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+
+/* تأثير الانتفاخ والجذب عند التمرير */
+#social-switch a:hover img,
+#social-switch a:focus img {
+    transform: translateY(-6px) scale(1.18);
+    box-shadow: 0 14px 30px rgba(255, 255, 255, 0.476);
+}
+
+/* وضع أولي: ديسكورد مخفي (عبر الشفافية) */
+#discord img {
+    opacity: 0;
+    pointer-events: none; /* افتراضيًا لا يستقبل نقرات */
+}
+
+/* واتساب ظاهر افتراضياً */
+#whatsapp img {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* تحسين اللمسات على الهواتف (لمسة أكبر عند اللمس) */
+@media (hover: none) {
+  #social-switch a img { transition-duration: 160ms; }
+  #social-switch a:active img { transform: translateY(-4px) scale(1.12); }
+}
+</style>
 
 <script>
-    // دالة لإظهار النص
-    function showText() {
-        const textElement = document.getElementById('whatsapp-text');
-        textElement.style.display = 'block';  // إظهار النص
+    // حالة بداية: واتساب ظاهر
+    let showingWhatsApp = true;
 
-        // إخفاء النص بعد 5 ثوانٍ
-        setTimeout(function() {
-            textElement.style.display = 'none'; // إخفاء النص
-        }, 11000);  // يبقى النص 5 ثوانٍ فقط
+    const waLink = document.getElementById('whatsapp');
+    const dcLink = document.getElementById('discord');
+    const waImg = waLink.querySelector('img');
+    const dcImg = dcLink.querySelector('img');
+
+    // تبديل بين الأيقونات (opacity + pointer-events)
+    function switchIcons() {
+        if (showingWhatsApp) {
+            // إخفاء واتساب، إظهار ديسكورد
+            waImg.style.opacity = '0';
+            waImg.style.pointerEvents = 'none';
+            waLink.style.pointerEvents = 'none';
+
+            dcImg.style.opacity = '1';
+            dcImg.style.pointerEvents = 'auto';
+            dcLink.style.pointerEvents = 'auto';
+        } else {
+            // إظهار واتساب، إخفاء ديسكورد
+            waImg.style.opacity = '1';
+            waImg.style.pointerEvents = 'auto';
+            waLink.style.pointerEvents = 'auto';
+
+            dcImg.style.opacity = '0';
+            dcImg.style.pointerEvents = 'none';
+            dcLink.style.pointerEvents = 'none';
+        }
+
+        // نبدّل الحالة (تدل على الحالة قبل التنقل التالي)
+        showingWhatsApp = !showingWhatsApp;
     }
 
-    // إظهار النص كل 30 ثانية
-    setInterval(showText, 18000); // 30000 ميلي ثانية = 30 ثانية
+    // شغّل التبديل كل 5 ثواني
+    const switchInterval = setInterval(switchIcons, 5000);
+
+    // لو ضغطت على رابط الواتساب أثناء عرض الواتساب — اذهب للديسكورد بدلاً منه
+    waLink.addEventListener('click', function(e) {
+        // إذا كانت الحالة الحالية تشير إلى أن الواتساب هو الظاهر الآن
+        // (ملاحظة: showingWhatsApp هو قيمة الحالة الحالية قبل أي تبديل آخر)
+        if (showingWhatsApp) {
+            e.preventDefault(); // منع الفتح الافتراضي للواتساب
+            // افتح الديسكورد في تاب جديدة
+            const url = dcLink.getAttribute('href');
+            window.open(url, '_blank');
+            // خيار: نبدّل الأيقونة فور الضغط لتوضيح التغيير للمستخدم
+            // فور الضغط نُظهر الديسكورد (نفس تأثير التبديل)
+            waImg.style.opacity = '0';
+            waImg.style.pointerEvents = 'none';
+            waLink.style.pointerEvents = 'none';
+
+            dcImg.style.opacity = '1';
+            dcImg.style.pointerEvents = 'auto';
+            dcLink.style.pointerEvents = 'auto';
+
+            // ونقلب الحالة لأننا الآن عرضنا الديسكورد
+            showingWhatsApp = false;
+        }
+        // إذا لم يكن واتساب ظاهر (يعني ديسكورد ظاهر) فسيعمل الرابط كالمعتاد
+    });
+
+    // (اختياري) إذا تريد أن الضغط على الديسكورد أثناء ظهوره يفتح الديسكورد طبيعياً فلا حاجة لتعديل
+
+    /* ---- ظهور النص (مثل كودك القديم) ---- */
+    function showText() {
+        const textElement = document.getElementById('whatsapp-text');
+        textElement.style.display = 'block';
+        textElement.setAttribute('aria-hidden', 'false');
+
+        // إخفاء النص بعد 11 ثانية (مثل كودك الأول)
+        setTimeout(function() {
+            textElement.style.display = 'none';
+            textElement.setAttribute('aria-hidden', 'true');
+        }, 4500); // هنا 11000 ملي ثانية كما في كودك القديم
+    }
+
+    // اظهر النص كل 18 ثانية (مثل كودك القديم)
+    setInterval(showText, 18000);
+
+    // — تشغيل أول ظهور فور تحميل الصفحة (لو تبي تعطّل احذفه)
+    window.addEventListener('DOMContentLoaded', () => {
+        // إظهار رسالة أولية مباشرة عند التحميل (اختياري)
+        showText();
+    });
 </script>
-
-
-<!-- النص الذي سيظهر فوق الأيقونة -->
-<div id="whatsapp-text" class="whatsapp-text">
-   👇 لإستلام الطلبات و خدمة العملاء اضغط هنا
-    
-</div>
 
  <script>
     document.onkeydown = function(e) {

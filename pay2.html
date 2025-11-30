@@ -26,8 +26,9 @@
     <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required><br>
     <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد من صحة البريد الإلكتروني قبل الإرسال!</span><br><br>
 
-    <input type="tel" name="phone" placeholder="أدخل رقم جوالك" pattern="[0-9]{10}" required><br>
-    <span style="font-size: 14px; color: #dd0b0b;">يرجى التأكد أن الرقم يتكون من 10 أرقام</span><br><br>
+   <input type="tel" name="phone" placeholder="أدخل رقم جوالك " pattern="[0-9]{10}" required><br>
+    <span style="font-size: 14px; color: #444444;">يرجى التأكد أن رقم الهاتف يتكون من 10 أرقام </span><br><br>
+     <span style="font-size: 14px; color: #dd0b0b;">يرجى العِلم بأن رقم الهاتف هو رقم الطلب</span><br><br>
 
     <select name="product" id="product" onchange="updatePrice()" required>
       <option disabled selected>اختر المنتج</option>
@@ -41,9 +42,11 @@
     <input type="text" name="الكود" id="discount-code" placeholder="ادخل كود الخصم" style="width: 100%; padding: 6px; margin-bottom: 6px;">
     <button type="button" onclick="checkDiscountCode()" style="width: 50px; height: 30px; font-size: 12px; border-radius: 6px; cursor: pointer;">تحقق</button>
     <div id="discount-message" style="font-size: 14px; margin-top: 6px;"></div>
-    <small style="font-size: 14px; color: green; display: block; margin-top: 8px;">
-      ملاحظة : يوجد كود خصم الآن، إذا تريد الحصول عليه تواصل معنا في التيكتوك أو الواتساب (خصم 10%)
-    </small>
+   
+<small style="font-size: 14px; color: green; display: block; margin-top: 8px;">
+    ملاحظة : يوجد كود خصم الآن، إذا تريد الحصول عليه أدخل سيرفر الديسكورد (خصم 10%)
+</small>
+
 
     <input type="file" name="receipt" accept="image/*" required onchange="previewImage(event)">
     <img id="preview" style="display:none; max-width: 100%; margin-top: 10px;" />
@@ -53,10 +56,10 @@
     <span>💸 السعر بعد الخصم: <span id="discounted-price">-- ريال سعودي</span></span><br><br>
 
     <input type="hidden" name="_captcha" value="false" />
-    <input type="hidden" name="_next" value="https://strine1.github.io/-/d" />
-    <input type="hidden" name="_subject" value="إيصال جديد من عميل" />
-
-    <button type="submit">لقد حوّلت المبلغ ✅</button>
+    <input type="hidden" name="_next" value="https://bfstore1.com/PayDone" />
+    <input type="hidden" name="_subject" value="طلب جديد من عميل" />
+    
+<button type="submit"> إتمام الطلب ✅</button>
   </form>
 
   <footer style="margin-top: 40px; text-align: center; font-size: 13px; color: #777;">

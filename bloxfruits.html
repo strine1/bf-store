@@ -311,8 +311,8 @@ nav ul li a:hover {
   <h6>ريس التنين غير متوفر</h6>
   <p class="price">
     السعر:
-    <span class="old-price">69 ر.س</span>
-    <span class="new-price">56 ر.س</span>
+    <span class="old-price">76 ر.س</span>
+    <span class="new-price">62 ر.س</span>
   </p>
   <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
 </div>
@@ -327,8 +327,8 @@ nav ul li a:hover {
   <p>نسوي لحسابك إيقاض لأي فاكة تحددها انت رايد كامل</p>
   <p class="price">
     السعر:
-    <span class="old-price">42 ر.س</span>
-    <span class="new-price">30 ر.س</span>
+    <span class="old-price">48 ر.س</span>
+    <span class="new-price">36 ر.س</span>
   </p>
   <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
 </div>
@@ -338,7 +338,7 @@ nav ul li a:hover {
   <img src="cdk.png" alt="سيوف أودن" width="100%" height="auto">
   <h2>سيوف أودن</h2>
   <p>نجيب لك سيوف اودن</p>
-  <p class="price">السعر: 42 ر.س</p>
+  <p class="price">السعر: 47 ر.س</p>
   <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
 </div>
 
@@ -347,7 +347,7 @@ nav ul li a:hover {
   <img src="FoxLampSword.png" alt="سيف ياماتو" width="100%" height="auto">
   <h2>سيف ياماتو</h2>
   <p>نجيب لك سيف ياماتو [الكيتسوني]</p>
-  <p class="price">السعر: 38 ر.س</p>
+  <p class="price">السعر: 39 ر.س</p>
   <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
 </div>
 
@@ -356,7 +356,7 @@ nav ul li a:hover {
   <img src="godhuman.png" alt="القود هيومن" width="100%" height="auto">
   <h2>القود هيومن</h2>
   <p>نجيب لك في حسابك أسلوب القود هيومن</p>
-  <p class="price">السعر: 46 ر.س</p>
+  <p class="price">السعر: 56 ر.س</p>
   <button class="add-to-cart" onclick="orderNow(this)">أطلب الآن</button>
 </div>
 
@@ -394,6 +394,27 @@ nav ul li a:hover {
   
     </div>
 
+<script>
+  (function() {
+    const cards = document.querySelectorAll('.product');
+    cards.forEach((card, idx) => {
+      // استخدم data-page لو موجود، وإلا استخدم اسم افتراضي product-1.html ...
+      const page = card.dataset && card.dataset.page ? card.dataset.page : `product-${idx+1}.html`;
+
+      card.addEventListener('click', function(e) {
+        // لو النقر كان داخل زر أو رابط، لا نتدخل — اترك الزر ينفذ onclick inline (مثل orderNow)
+        if (e.target.closest('button') || e.target.closest('a')) {
+          return;
+        }
+
+        // افحص إن الصفحة ليست فارغة ثم انتقل
+        if (page && page.trim() !== '') {
+          window.location.href = page;
+        }
+      });
+    });
+  })();
+</script>
 
 
     <style>
@@ -430,6 +451,16 @@ nav ul li a:hover {
       .add-to-cart:hover {
         background: linear-gradient(135deg, #00cec9, #00b894);
       }
+
+      img {
+    -webkit-user-drag: none; /* لمنع السحب في كروم وسفاري */
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -webkit-user-drag: none;
+    pointer-events: none; /* لمنع التفاعل مع الصورة بالكامل إذا تريد */
+}
+
     </style>
 
   </section>
@@ -452,6 +483,7 @@ function goToCheckout(productId) {
        <section id="about" class="reviews-section">
   <h2>آراء العملاء</h2>
   <div class="reviews-container">
+
 
        <div class="review">
       <p>"حساب جميل"</p>
@@ -861,18 +893,25 @@ function goToCheckout(productId) {
   <ul>
     <li>
       <a href="https://wa.me/966594610374" target="_blank">
-        <i class="fas fa-brands fa-whatsapp"></i> الواتساب
+        <i class="fas fa-brands fa-whatsapp"></i> واتساب
       </a>
     </li>
  <li>
         <a href="https://www.tiktok.com/@bfstoree" target="_blank">
-          <i class="fab fa-tiktok"></i> @BFstoree
+          <i class="fab fa-tiktok"></i> تيكتوك
         </a>
       </li>
  <li>
+  <a href="https://discord.gg/bNpkwqK2jT" target="_blank">
+
+    <i class="fab fa-discord"></i> ديسكورد
+  </a>
+</li>
+
+ <li>
   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shopmanage.host@gmail.com&su=استفسار&body=السلام+عليكم،+لدي+استفسار+بخصوص+المتجر" target="_blank">
 
-    <i class="fas fa-envelope"></i> shopmanage.host@gmail.com
+    <i class="fas fa-envelope"></i> Email
   </a>
 </li>
 

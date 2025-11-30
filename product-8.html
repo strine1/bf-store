@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تفاصيل المنتج</title>
+     <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa&family=Cairo:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--bg:#ffffff;--card:#fff;--muted:#dedede;--accent:#0b84ff;}
+    html,body{height:100%;margin:0;font-family: 'Cairo', sans-serif;;background:var(--bg);color:#ffffff;direction:rtl}
+    .container{max-width:980px;margin:28px auto;padding:16px}
+    .back{display:inline-block;margin-bottom:12px;text-decoration:none;color:var(--muted)}
+    .product-card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(11,12,14,0.06);display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start}
+    @media (max-width:900px){ .product-card{grid-template-columns:1fr;}}
+    .media{background:#ffffff;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:260px}
+    .media img, .media video{width:100%;height:auto;display:block;max-height:520px;object-fit:contain}
+    .info h1{margin:0 0 8px;font-size:22px}
+    .info .desc{color:var(--muted);margin:10px 0;line-height:1.6}
+    .price-row{display:flex;gap:12px;align-items:center;margin:14px 0;flex-wrap:wrap}
+    .price-row .price-label{color:var(--muted)}
+    .price-row .price-current{font-weight:700;font-size:20px}
+    .price-row .price-old{text-decoration:line-through;color:#999;margin-right:8px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .btn-order{background:var(--accent);color:#fff}
+   .btn-back {
+  background: transparent;
+  color: #e0faff;
+  border: 2px solid #38bdf8;
+  padding: 10px 22px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+.btn-back:hover {
+  background: rgba(56, 189, 248, 0.15);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.5);
+}
+
+.btn-back:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(56, 189, 248, 0.4);
+}
+
+    .meta{font-size:18px;color:#72f352;margin-top:8px}
+    /* small helper */
+    .note{margin-top:10px;color:#fbfbfb;font-size:13px}
+    /* dark prefer */
+    @media (prefers-color-scheme:dark){
+      :root{--bg:#20252f;--card:#1b202a;--muted:#b8bcc0;}
+      .product-card{box-shadow:0 8px 30px #ffffff}
+    }
+
+    .video-p{
+  width: 100%;
+  height: 145px;
+  max-height: 145px;
+  object-fit: cover;
+  border-radius: 10px; 
+  background-color: #20252f;     /* يظهر لو الفيديو يأخذ وقت للتحميل */
+}
+
+
+
+
+.social-icons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-icons .icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.social-icons .discord {
+  color: #5865F2;
+}
+.social-icons .whatsapp {
+  color: #25D366;
+}
+.social-icons .tiktok {
+  color: #fff;
+}
+
+.social-icons .icon:hover {
+  transform: translateY(-6px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.06);
+}
+
+
+      img {
+    -webkit-user-drag: none; /* لمنع السحب في كروم وسفاري */
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    -webkit-user-drag: none;
+    pointer-events: none; /* لمنع التفاعل مع الصورة بالكامل إذا تريد */
+}
+  </style>
+  <link rel="icon" href="BF-STORE.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="desgins.html">← العودة للمتجر</a>
+
+    <article class="product-card">
+      <!-- LEFT: المعلومات -->
+      <div class="info">
+        <!-- عيّن العنوان هنا -->
+        <h1 id="product-title">تصميم شعار متحرك</h1>
+
+        <!-- الوصف -->
+        <p class="desc" id="product-desc">نصمم لك شعار متحرك مع تحديد الحروف والشكل والألوان على ذوقك
+</p>
+
+        <!-- السعر: ضع السعر الحالي والقديم إذا وُجد -->
+        <div class="price-row" aria-hidden="false">
+          <div class="price-label">السعر:</div>
+          <div class="price-current" id="price">28 ر.س</div>
+        
+        </div>
+
+        <div class="meta" id="meta-info">متوفر : نعم</div>
+
+        <div class="actions">
+          <!-- زر الطلب — لا تغيّر onclick لأنها تستدعي نفس orderNow -->
+        
+ <button class="btn btn-back" onclick="location.href='movelogo.html'">الدفع</button>
+          <!-- زر دفع / صفحة أخرى -->
+       
+        </div>
+
+        <p class="note">ملاحظة : إذا لديك فكرة معينة تواصل معنا عبر الواتساب أو الديسكورد لتنسيقها</p>
+      </div>
+
+      <!-- RIGHT: الميديا -->
+      <div class="media" id="media-slot">
+    <img src="desgin-icon.gif" alt=" تصميم شعار متحرك">
+          </div>
+             <div class="social-icons">
+  <a href="https://discord.gg/bNpkwqK2jT" class="icon discord" target="_blank">
+    <i class="fab fa-discord"></i>
+  </a>
+
+  <a href="https://wa.me/966594610374" class="icon whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <a href="https://tiktok.com/@bfstoree" class="icon tiktok" target="_blank">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>  
+
+       
+        </div>
+      </div>
+    </article>
+  </div>
+ <script>
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) {  // F12
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl+Shift+I
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {  // Ctrl+Shift+J
+            return false;
+        }
+    }
+</script>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
+
+  <script>
+    // عدّل هنا فقط إن تغيّر رقمك
+    const RAW_PHONE = "0594610374";
+
+    // يحوّل رقم KSA لصيغة دولية صحيحة لواتساب
+    function formatKsaPhone(number) {
+      let n = (number || "").replace(/\D+/g, "");
+      if (n.startsWith("966")) return n;
+      if (n.startsWith("05")) return "966" + n.slice(1);
+      if (n.startsWith("5")) return "966" + n;
+      return n;
+    }
+
+    function orderNow(buttonEl) {
+      // حاول إيجاد عنوان المنتج بأقرب طريقة ممكنة
+      let productTitle = "منتج";
+      // إذا الزر داخل .product-card نبحث فيها
+      const card = buttonEl.closest('.product-card');
+      if (card) {
+        const t = card.querySelector('#product-title');
+        if (t && t.innerText.trim()) productTitle = t.innerText.trim();
+      } else {
+        // محاولة بديلة: عنصر عام بالصفحة
+        const t2 = document.getElementById('product-title');
+        if (t2 && t2.innerText.trim()) productTitle = t2.innerText.trim();
+      }
+
+      const phoneIntl = formatKsaPhone(RAW_PHONE);
+      const message = encodeURIComponent(`مرحبًا، أريد ${productTitle} :)`);
+      window.open(`https://wa.me/${phoneIntl}?text=${message}`, "_blank");
+    }
+
+    // خيار مساعد: دالة سهلة لتعيين الميديا برمجياً لو تحب
+    // استخدمها في console أو سكربت آخر: setMedia({type:'img',src:'img.jpg',alt:'...'})
+    function setMedia({type, src, alt}) {
+      const slot = document.getElementById('media-slot');
+      slot.innerHTML = '';
+      if (type === 'img') {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+        slot.appendChild(img);
+      } else if (type === 'video') {
+        const video = document.createElement('video');
+        video.controls = true;
+        const srcEl = document.createElement('source');
+        srcEl.src = src;
+        srcEl.type = 'video/mp4';
+        video.appendChild(srcEl);
+        slot.appendChild(video);
+      }
+    }
+
+    // إذا تبي، تقدر تملأ الصفحة أوتوماتيكياً عبر URL params (مثال: ?title=...&price=...)
+    (function fillFromUrl() {
+      try {
+        const params = new URLSearchParams(location.search);
+        if (params.get('title')) document.getElementById('product-title').innerText = decodeURIComponent(params.get('title'));
+        if (params.get('desc')) document.getElementById('product-desc').innerText = decodeURIComponent(params.get('desc'));
+        if (params.get('price')) document.getElementById('price').innerText = decodeURIComponent(params.get('price'));
+        if (params.get('old')) {
+          const old = document.getElementById('old-price');
+          old.innerText = decodeURIComponent(params.get('old'));
+          old.style.display = '';
+        }
+        if (params.get('mediaType') && params.get('mediaSrc')) {
+          setMedia({ type: params.get('mediaType'), src: params.get('mediaSrc'), alt: params.get('title') || '' });
+        }
+      } catch(e) { /* silent */ }
+    })();
+  </script>
+</body>
+</html>
