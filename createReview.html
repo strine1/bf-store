@@ -79,18 +79,41 @@
     });
 </script>
 
-  <script>
-    const allowedOrder = 5181292347;
+ <script>
 
-    // 🔥 هنا تتحكم يدويًا
-    let orderActive = true;  
-    // خليها false لو تبي توقف التقييم:
-    // let orderActive = false;
+  // 🔥 تحكم بالقفل هنا
+  let orderActive = true;  
+  // لو تبي تقفله، خليه false
+  // let orderActive = false;
 
-    document.getElementById("reviewForm").addEventListener("submit", function(event) {
-      const orderIdInput = Number(document.getElementById("orderId").value);
+  document.getElementById("reviewForm").addEventListener("submit", function(event) {
+      const orderId = document.getElementById("orderId").value.trim();
       const status = document.getElementById("status");
       status.innerHTML = "";
+
+      // التحقق من أن رقم الطلب 10 أرقام فقط
+      const tenDigits = /^[0-9]{10}$/;
+
+      if (!tenDigits.test(orderId)) {
+        event.preventDefault();
+        status.innerHTML = "<p class='error'>رقم الطلب يجب أن يكون 10 أرقام.</p>";
+        return;
+      }
+
+      // رقم صحيح لكن التقييم مقفول
+      if (!orderActive) {
+        event.preventDefault();
+        status.innerHTML = "<p class='error'>لقد قيّمت بالفعل.</p>";
+        return;
+      }
+
+      // رقم صحيح والتقييم شغال
+      status.innerHTML = "<p class='success'>تم إرسال تقييمك… شكراً لك ❤️</p>";
+  });
+
+</script>
+
+ <script>
 
       // الرقم غلط
       if (orderIdInput !== allowedOrder) {
@@ -108,7 +131,7 @@
 
       // الرقم صح والتقييم شغال — يرسل
       status.innerHTML = "<p class='success'>تم إرسال تقييمك… شكراً لك ❤️</p>";
-    });
+    ;
   </script>
 
 </body>
