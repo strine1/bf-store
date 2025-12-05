@@ -269,23 +269,27 @@ nav ul li a:hover {
     font-weight: bold;
     font-size: 1.1em;
   }
+
+   .new2-price {
+    color: #fbfbfb;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
 </style>
   <main>
-  <section id="products" class="product-section">
-    <!-- المنتج 2: يوزر رباعي -->
+<section id="products" class="product-section">
+
     <div class="product">
       <img src="user4.png" alt="يوزر رباعي" width="100%" height="auto">
       <h2>يوزر رباعي</h2>
       <p>حساب ديسكورد رباعي، تقدر تأخذ اليوزر وتحطه بحسابك الأساسي</p>
       <p class="price">
         السعر:
-        <span class="new-price">74 ر.س</span>
+        <span class="new2-price">74 ر.س</span>
       </p>
       <button class="add-to-cart" onclick="location.href='user4.html'">اشترِ الآن</button>
-     
     </div>
 
-     <!-- المنتج 1: تصميم شعار متحرك -->
     <div class="product">
       <img src="user4-4.png" alt="حساب ديسكورد رباعي" width="100%" height="auto">
       <h2>يوزر شبة رباعي</h2>
@@ -296,35 +300,51 @@ nav ul li a:hover {
         <span class="new1-price">49 ر.س</span>
       </p>
       <button class="add-to-cart" onclick="location.href='user4-4.html'">اشترِ الآن</button>
-   
     </div>
 
-    <!-- المنتج 3: تصميم سيرفر -->
     <div class="product">
       <img src="discord-server.png" alt="تصميم سيرفر" width="100%" height="auto">
       <h2>تصميم سيرفر الديسكورد</h2>
       <p>نصمم لك سيرفر ديسكورد كامل حسب الطلب مع إضافات حسب اختيارك.</p>
       <p class="price">
         السعر:
-        <span class="new-price">99 ر.س</span>
+        <span class="new2-price">99 ر.س</span>
       </p>
       <button class="add-to-cart" onclick="location.href='ServerDiscord.html'">اشترِ الآن</button>
-
     </div>
 
-
-    <!-- المنتج 3: تصميم سيرفر -->
     <div class="product">
       <img src="discord-low-server.png" alt="تصميم سيرفر" width="100%" height="auto">
       <h2>تصميم سيرفر الديسكورد</h2>
       <p>نصمم لك سيرفر ديسكورد شبة كامل حسب الطلب مع إضافات حسب اختيارك.</p>
       <p class="price">
         السعر:
-        <span class="new-price">59 ر.س</span>
+        <span class="new2-price">59 ر.س</span>
       </p>
       <button class="add-to-cart" onclick="location.href='ServerDiscord-low.html'">اشترِ الآن</button>
-
     </div>
+
+</section>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('#products .product');
+
+  cards.forEach((card, index) => {
+    const pageNumber = index + 13; // يبدأ من 13
+    const page = `product-${pageNumber}.html`;
+
+    card.addEventListener('click', function(e) {
+      // إذا الضغط على زر "اشترِ الآن" لا نحول
+      if (e.target.closest('button') || e.target.closest('a')) return;
+
+      window.location.href = page;
+    });
+  });
+})();
+</script>
+
+
 
 
   </section>
@@ -754,23 +774,31 @@ function goToCheckout(productId) {
   <ul>
     <li>
       <a href="https://wa.me/966594610374" target="_blank">
-        <i class="fas fa-brands fa-whatsapp"></i> الواتساب
+        <i class="fas fa-brands fa-whatsapp"></i> واتساب
       </a>
     </li>
  <li>
-        <a href="https://www.tiktok.com/@bfstoree" target="_blank">
-          <i class="fab fa-tiktok"></i> @BFstoree
+        <a href="https://www.tiktok.com/@bfstore.1" target="_blank">
+          <i class="fab fa-tiktok"></i> تيكتوك
         </a>
       </li>
  <li>
+  <a href="https://discord.gg/bNpkwqK2jT" target="_blank">
+
+    <i class="fab fa-discord"></i> ديسكورد
+  </a>
+</li>
+
+ <li>
   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shopmanage.host@gmail.com&su=استفسار&body=السلام+عليكم،+لدي+استفسار+بخصوص+المتجر" target="_blank">
 
-    <i class="fas fa-envelope"></i> shopmanage.host@gmail.com
+    <i class="fas fa-envelope"></i> Email
   </a>
 </li>
 
   </ul>
 </div>
+
 
 <!-- الخطوط والأيقونات -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
