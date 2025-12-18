@@ -32,10 +32,10 @@
 
     <select name="product" id="product" onchange="updatePrice()" required>
       <option disabled selected>اختر المنتج</option>
-      <option value="animated-logo--28-SAR">تصميم شعار متحرك</option>
-      <option value="static-logo--15-SAR">تصميم شعار</option>
-      <option value="long-video-edit--35-SAR">منتاج فيديو طويل</option>
-      <option value="shorts-edit--20-SAR">منتاج فيديو شورتس</option>
+      <option value="animated-logo--15-SAR">تصميم شعار متحرك</option>
+      <option value="static-logo--5-SAR">تصميم شعار</option>
+      <option value="long-video-edit--20-SAR">منتاج فيديو طويل</option>
+      <option value="shorts-edit--10-SAR">منتاج فيديو شورتس</option>
       <option value="thumbnail--10-SAR">صورة مصغرة</option>
     </select><br><br>
 
@@ -65,15 +65,33 @@
   <footer style="margin-top: 40px; text-align: center; font-size: 13px; color: #777;">
     <span class="icon">💸</span> U7-pay &copy; جميع الحقوق محفوظة
   </footer>
+ <script>
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) {  // F12
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl+Shift+I
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {  // Ctrl+Shift+J
+            return false;
+        }
+    }
+</script>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
 
   <script>
     let currentPrice = 0;
 
     const prices = {
-      "animated-logo--28-SAR": 28,
-      "static-logo--15-SAR": 15,
-      "long-video-edit--35-SAR": 35,
-      "shorts-edit--20-SAR": 20,
+      "animated-logo--15-SAR": 15,
+      "static-logo--5-SAR": 5,
+      "long-video-edit--20-SAR": 20,
+      "shorts-edit--10-SAR": 10,
       "thumbnail--10-SAR": 10
     };
 
@@ -83,49 +101,69 @@
       document.getElementById('product-price').innerText = currentPrice + " ر.س";
       applyDiscount();
     }
+      </script><script>
+  // الكوبونات المتاحة
+  const discountCodes = {
+    "BF-10": 10,
+    "برق": 10,
+    "BRQ": 10,
+    "U7-BF": 25
+  };
 
-    function applyDiscount() {
-      const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
-      let discountedPrice = currentPrice;
-      if (discountCode === "BF-10") {
-        discountedPrice = (currentPrice * 0.9).toFixed(2);
-        document.getElementById('discount-message').style.color = "green";
-        document.getElementById('discount-message').innerText = "✅ تم تطبيق الخصم 10%";
-      } else if (discountCode.length > 0) {
-        document.getElementById('discount-message').style.color = "red";
-        document.getElementById('discount-message').innerText = "❌ الكود غير صحيح";
-      } else {
-        document.getElementById('discount-message').innerText = "";
-      }
-      document.getElementById('discounted-price').innerText = discountedPrice + " ر.س";
+  function normalizeCode(code) {
+    // إذا إنجليزي نخليه Uppercase، العربي يظل كما هو
+    return /[a-zA-Z]/.test(code) ? code.toUpperCase() : code;
+  }
+
+  function applyDiscount() {
+    const rawCode = document.getElementById('discount-code').value.trim();
+    const code = normalizeCode(rawCode);
+
+    let discountedPrice = currentPrice;
+    const message = document.getElementById('discount-message');
+
+    if (discountCodes.hasOwnProperty(code)) {
+      const discount = discountCodes[code];
+      discountedPrice = (currentPrice * (1 - discount / 100)).toFixed(2);
+      message.style.color = "green";
+      message.innerText = `✅ تم تطبيق الخصم ${discount}%`;
+    } else if (rawCode.length > 0) {
+      message.style.color = "red";
+      message.innerText = "❌ الكود غير صحيح";
+    } else {
+      message.innerText = "";
     }
 
-    function checkDiscountCode() {
-      applyDiscount();
+    document.getElementById('discounted-price').innerText =
+      discountedPrice + " ر.س";
+  }
+
+  function checkDiscountCode() {
+    applyDiscount();
+  }
+
+  function validateDiscountCode() {
+    if (currentPrice === 0) {
+      alert("يرجى اختيار المنتج أولاً");
+      return false;
     }
+    return true;
+  }
 
-    function validateDiscountCode() {
-      if (currentPrice === 0) {
-        alert("يرجى اختيار المنتج أولاً");
-        return false;
-      }
-      return true;
-    }
+  function previewImage(event) {
+    const preview = document.getElementById('preview');
+    preview.src = URL.createObjectURL(event.target.files[0]);
+    preview.style.display = 'block';
+  }
 
-    function previewImage(event) {
-      const preview = document.getElementById('preview');
-      preview.src = URL.createObjectURL(event.target.files[0]);
-      preview.style.display = 'block';
-    }
+  document.getElementById('product').addEventListener('change', () => {
+    document.getElementById('discount-code').value = "";
+    document.getElementById('discount-message').innerText = "";
+    updatePrice();
+  });
 
-    document.getElementById('product').addEventListener('change', () => {
-      document.getElementById('discount-code').value = "";
-      document.getElementById('discount-message').innerText = "";
-      updatePrice();
-    });
-
-    document.getElementById('discount-code').addEventListener('input', applyDiscount);
-  </script>
+  document.getElementById('discount-code').addEventListener('input', applyDiscount);
+</script>
 
 </body>
 </html>

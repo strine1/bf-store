@@ -60,51 +60,75 @@
     ملاحظة : يوجد كود خصم الآن، إذا تريد الحصول عليه أدخل سيرفر الديسكورد (خصم 10%)
 </small>
 
-
 <script>
-  function checkDiscountCode() {
-    const input = document.getElementById('discount-code').value.trim().toUpperCase();
-    const messageEl = document.getElementById('discount-message');
-    if(input === "BF-10") {
-      messageEl.style.color = "green";
-      messageEl.innerText = "✅ تم قبول الكود! تم تطبيق خصم 10%.";
-      applyDiscount();
-    } else {
-      messageEl.style.color = "red";
-      messageEl.innerText = "❌ الكود غير صحيح، حاول مرة أخرى.";
-      applyDiscount(true);
-    }
+  let currentPrice = 0;
+
+  function previewImage(event) {
+    const preview = document.getElementById('preview');
+    preview.src = URL.createObjectURL(event.target.files[0]);
+    preview.style.display = 'block';
   }
 
-  function applyDiscount(reset = false) {
+  function updatePrice() {
+    const product = document.getElementById('product').value;
     const prices = {
-      "acaountbloxfruit--28-SAR": 35,
-      "LegendAccount--279-SAR" : 279
+      "acaountbloxfruit--35-SAR": 35,
+      "LegendaryAccount--279-SAR": 279
     };
-    const productSelect = document.getElementById('product');
-    const productValue = productSelect.value;
-    const currentPrice = prices[productValue] || 0;
-    const discountMessage = document.getElementById('discount-message').innerText;
+    currentPrice = prices[product] || 0;
+    document.getElementById('product-price').innerText =
+      currentPrice ? currentPrice + " ر.س" : "-- ريال سعودي";
+    applyDiscount();
+  }
+
+  /* ===== الكوبونات ===== */
+  const discountCodes = {
+    "BF-10": 10,
+    "برق": 10,
+    "BRQ": 10,
+    "U7-BF": 25
+  };
+
+  function normalizeCode(code) {
+    return /[a-zA-Z]/.test(code) ? code.toUpperCase() : code;
+  }
+
+  function applyDiscount() {
+    const rawCode = document.getElementById('discount-code').value.trim();
+    const discountCode = normalizeCode(rawCode);
+    const messageEl = document.getElementById('discount-message');
+
     let discountedPrice = currentPrice;
 
-    if(reset || discountMessage.includes("غير صحيح")) {
-      discountedPrice = currentPrice;
+    if (!rawCode) {
+      // إذا الحقل فاضي
+      messageEl.innerText = "";
+    } else if (discountCodes[discountCode]) {
+      const discount = discountCodes[discountCode];
+      discountedPrice = (currentPrice * (1 - discount / 100)).toFixed(2);
+      messageEl.style.color = "green";
+      messageEl.innerText = `✅ تم تطبيق الخصم ${discount}%`;
     } else {
-      const codeInput = document.getElementById('discount-code').value.trim().toUpperCase();
-      if(codeInput === "BF-10") {
-        discountedPrice = (currentPrice * 0.9).toFixed(2);
-      }
+      messageEl.style.color = "red";
+      messageEl.innerText = "❌ الكوبون غير صحيح";
     }
 
-    document.getElementById('product-price').innerText = currentPrice + " ر.س";
-    document.getElementById('discounted-price').innerText = discountedPrice + " ر.س";
+    document.getElementById('discounted-price').innerText =
+      (currentPrice ? discountedPrice : "--") + " ر.س";
   }
 
-  document.getElementById('product').addEventListener('change', () => {
-    document.getElementById('discount-message').innerText = "";
-    applyDiscount(true);
-  });
+  document.getElementById('discount-code')
+    .addEventListener('input', applyDiscount);
+
+  function validateDiscountCode() {
+    if (currentPrice === 0) {
+      alert("يرجى اختيار المنتج أولاً");
+      return false;
+    }
+    return true;
+  }
 </script>
+
 
     <input type="file" name="receipt" accept="image/*" required onchange="previewImage(event)">
     <img id="preview" style="display:none; max-width: 100%; margin-top: 10px;" />
@@ -124,50 +148,26 @@
     <span class="icon">💸</span> U7-pay &copy; جميع الحقوق محفوظة
   </footer>
 
-  <script>
-    let currentPrice = 0;
+  
 
-    function previewImage(event) {
-      const preview = document.getElementById('preview');
-      preview.src = URL.createObjectURL(event.target.files[0]);
-      preview.style.display = 'block';
+ <script>
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) {  // F12
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl+Shift+I
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {  // Ctrl+Shift+J
+            return false;
+        }
     }
-
-   function updatePrice() {
-  const product = document.getElementById('product').value;
-  const prices = {
-    "acaountbloxfruit--35-SAR": 35,
-    "LegendaryAccount--279-SAR": 279, // هذا اللي يخص كل الريسات
-  };
-  currentPrice = prices[product] || 0;
-  document.getElementById('product-price').innerText = currentPrice + " ر.س";
-  applyDiscount();
-}
-
-
-    function applyDiscount() {
-      const discountCode = document.getElementById('discount-code').value.trim().toUpperCase();
-      let discountedPrice = currentPrice;
-      if (discountCode === "BF-10") {
-        discountedPrice = (currentPrice * 0.9).toFixed(2);
-      }
-      document.getElementById('discounted-price').innerText = discountedPrice + " ر.س";
-    }
-
-    document.getElementById('discount-code').addEventListener('input', applyDiscount);
-
-    function validateDiscountCode() {
-      // فقط تأكد أن السعر بعد الخصم > 0 (أي تم اختيار منتج)
-      if(currentPrice === 0){
-        alert("يرجى اختيار المنتج أولاً");
-        return false;
-      }
-      return true;
-    }
-  </script>
-</body>
-
-</body>
+</script>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+</script>
 
 </body>
 
