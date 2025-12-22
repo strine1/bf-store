@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>إضافة تقييم</title>
   <link rel="icon" href="BF-STORE.png">
+
+
+  <div id="key-screen">
+  <div class="key-box">
+    <h2>أدخل مفتاح التقييم</h2>
+    <input type="text" id="key-input" placeholder="أدخل المفتاح هنا">
+    <button id="key-submit" type="button">دخول</button>
+    <p id="key-message"></p>
+  </div>
+</div>
+
   <style>
     body{font-family:Cairo, sans-serif;background:#1E1F22;margin:0;padding:20px}
     .logo {
@@ -23,9 +34,106 @@
     button:hover{background:#444}
     .error{color:red;text-align:center;margin-top:10px}
     .success{color:green;text-align:center;margin-top:10px}
+
+    #key-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 52, 49, 0.822);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.key-box {
+  background: #111;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  transition: transform 0.2s;
+}
+
+.key-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+.key-box button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #22c55e;
+  color: #fff;
+}
+
+#key-message {
+  margin-top: 15px;
+  color: #f87171;
+}
+
+/* اهتزاز عند الخطأ */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.3s;
+}
+
+
   </style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const keyScreen = document.getElementById('key-screen');
+  const keyBox = document.querySelector('.key-box');
+  const keyInput = document.getElementById('key-input');
+  const keySubmit = document.getElementById('key-submit');
+  const keyMessage = document.getElementById('key-message');
+
+  keySubmit.addEventListener('click', () => {
+    const value = keyInput.value.trim();
+    
+    if(value === "518129") {
+      // المفتاح صحيح: اختفاء تدريجي مع تصغير
+      keyScreen.style.transform = "scale(0.8) translateY(50px)";
+      keyScreen.style.opacity = "0";
+      setTimeout(() => {
+        keyScreen.style.display = "none";
+      }, 500);
+    } else {
+      // مفتاح خاطئ: اهتزاز
+      keyMessage.textContent = "المفتاح غير صالح أو انتهت صلاحيته";
+      keyBox.classList.add('shake');
+      setTimeout(() => keyBox.classList.remove('shake'), 300);
+    }
+  });
+
+  // تفعيل Enter عند الضغط على زر الإدخال
+  keyInput.addEventListener('keydown', (e) => {
+    if(e.key === "Enter") keySubmit.click();
+  });
+});
+</script>
+
+
 </head>
 <body>
+
 
   <div class="logo">
     <img src="BF-STORE.png" alt="Logo">

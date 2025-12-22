@@ -286,10 +286,12 @@ img, video {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+    cursor: pointer;
 }
 
 .product:hover {
   transform: scale(1.05);
+    cursor: pointer;
 }
 
 .product video {
