@@ -35,8 +35,9 @@
 
     <select name="product" id="product" onchange="updatePrice()" required>
       <option disabled selected>اختر المنتج</option>
-<option value="acaountbloxfruit--35-SAR">حساب بلوكس فروت عشوائي</option>
-<option value="LegendaryAccount--279-SAR" disabled style="color:#999;">
+<option value="TheBestAccount--1499-SAR">حساب بلوكس فروت أسطوري</option>
+<option value="bloxfruitAccount--35-SAR">حساب بلوكس فروت عشوائي</option>
+<option value="LegendaryAccount--279-SAR" disabled style="color:#bdbdbd;">
   حساب بلوكس فروت كل الريسات — نفذت الكمية
 </option>
 
@@ -72,7 +73,8 @@
   function updatePrice() {
     const product = document.getElementById('product').value;
     const prices = {
-      "acaountbloxfruit--35-SAR": 35,
+      "TheBestAccount--1499-SAR" :1499,
+      "bloxfruitAccount--35-SAR":35,
       "LegendaryAccount--279-SAR": 279
     };
     currentPrice = prices[product] || 0;

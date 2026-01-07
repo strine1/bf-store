@@ -238,6 +238,11 @@ nav ul li a:hover {
         <li><a href="#about">من نحن</a></li>
       </ul>
     </nav>
+    <select id="filter">
+    <option value="all">عرض الكل</option>
+    <option value="services">عرض الخدمات</option>
+    <option value="accounts">عرض الحسابات</option>
+  </select>
   </div>
 </header>
 
@@ -258,9 +263,25 @@ nav ul li a:hover {
 
     <main>
   <section id="products" class="product-section">
+      
+    <div class="product" data-category="accounts">
+  <video width="100%" height="auto" autoplay muted loop>
+    <source src="The Best.mp4" type="video/mp4">
+    متصفحك لا يدعم تشغيل الفيديو.
+  </video>
+  <h2>حساب BLOX FRUITS</h2>
+  <p>حساب بلوكس فروت أسطوري بمعنى الكلمة,لمشاهدة مميزات الحساب أضغط على المنتح</p>
 
-<div class="product out-of-stock">
-  <img src="legendaccount1.png" alt="حساب عشوائي" class="product-image">
+  <p class="price">
+    السعر:
+    <span class="old-price">1800 ر.س</span>
+    <span class="new-price">1499 ر.س</span>
+  </p>
+ <button class="add-to-cart" onclick="location.href='PayOption.html'">اشترِ الآن</button>
+</div>
+
+<div class="product out-of-stock" data-category="accounts">
+  <img src="legendaccount1.png" alt="حساب كل الريسات" class="product-image" >
   <h2>BLOX FRUITS حساب</h2>
   <p>حساب جميع الريسات ڤي4 فل قير ماب بلوكس فروت , شات روبلوكس مفتوح ضمان 100% ,الحساب غير مرتبط بإيميل ويوصلك فوري على البريد والواتساب</p>
   <p class="price">السعر: 279 ر.س</p>
@@ -300,8 +321,10 @@ nav ul li a:hover {
   object-fit: cover; /* يضمن أن الصورة تمتد إذا احتاجت، مع الحفاظ على نسبة الأبعاد */
 }
 </style>
+
+
 <!-- المنتج 1 -->
-<div class="product">
+<div class="product" data-category="services">
   <video width="100%" height="auto" autoplay muted loop>
     <source src="trial.mp4" type="video/mp4">
     متصفحك لا يدعم تشغيل الفيديو.
@@ -318,7 +341,7 @@ nav ul li a:hover {
 </div>
 
 <!-- المنتج 2 -->
-<div class="product">
+<div class="product" data-category="services">
   <video width="100%" height="auto" preload="auto" muted autoplay loop>
     <source src="awaken.mp4" type="video/mp4">
     متصفحك لا يدعم تشغيل الفيديو.
@@ -334,7 +357,7 @@ nav ul li a:hover {
 </div>
 
 <!-- المنتج 3 -->
-<div class="product">
+<div class="product" data-category="services">
   <img src="cdk.png" alt="سيوف أودن" width="100%" height="auto">
   <h2>سيوف أودن</h2>
   <p>نجيب لك سيوف اودن</p>
@@ -343,7 +366,7 @@ nav ul li a:hover {
 </div>
 
 <!-- المنتج 4 -->
-<div class="product">
+<div class="product" data-category="services">
   <img src="FoxLampSword.png" alt="سيف ياماتو" width="100%" height="auto">
   <h2>سيف ياماتو</h2>
   <p>نجيب لك سيف ياماتو [الكيتسوني]</p>
@@ -352,7 +375,7 @@ nav ul li a:hover {
 </div>
 
 <!-- المنتج 5 -->
-<div class="product">
+<div class="product" data-category="services">
   <img src="godhuman.png" alt="القود هيومن" width="100%" height="auto">
   <h2>القود هيومن</h2>
   <p>نجيب لك في حسابك أسلوب القود هيومن</p>
@@ -385,7 +408,7 @@ nav ul li a:hover {
   
     </div>
 
-    <div class="product">
+    <div class="product"  data-category="accounts">
       <img src="حساب عشوائي.png" alt="حساب عشوائي" width="100%" height="auto">
       <h2>حساب BLOXFRUIT</h2>
       <p>حساب بلوكس فروت عشوائي لفل ماكس, شات روبلوكس مفتوح ضمان 100% وغير مرتبط ب إيميل</p>
@@ -393,21 +416,22 @@ nav ul li a:hover {
     <button class="add-to-cart" onclick="location.href='PayOption.html'">اشترِ الآن</button>
   
     </div>
-
 <script>
   (function() {
     const cards = document.querySelectorAll('.product');
     cards.forEach((card, idx) => {
-      // استخدم data-page لو موجود، وإلا استخدم اسم افتراضي product-1.html ...
-      const page = card.dataset && card.dataset.page ? card.dataset.page : `product-${idx+1}.html`;
+      // يبدأ من product-0.html
+      const page = card.dataset && card.dataset.page
+        ? card.dataset.page
+        : `product-${idx}.html`;
 
       card.addEventListener('click', function(e) {
-        // لو النقر كان داخل زر أو رابط، لا نتدخل — اترك الزر ينفذ onclick inline (مثل orderNow)
+        // لو النقر كان داخل زر أو رابط، لا نتدخل
         if (e.target.closest('button') || e.target.closest('a')) {
           return;
         }
 
-        // افحص إن الصفحة ليست فارغة ثم انتقل
+        // الانتقال للصفحة
         if (page && page.trim() !== '') {
           window.location.href = page;
         }
@@ -416,8 +440,63 @@ nav ul li a:hover {
   })();
 </script>
 
+<script>
+  const filter = document.getElementById("filter");
+  const products = document.querySelectorAll(".product");
+
+  filter.addEventListener("change", () => {
+    const value = filter.value;
+
+    products.forEach(product => {
+      if (value === "all" || product.dataset.category === value) {
+        product.style.display = "block";
+      } else {
+        product.style.display = "none";
+      }
+    });
+  });
+</script>
+
 
     <style>
+
+select {
+  padding: 12px 10px;
+  font-size: 16px; /* مهم للجوال (يمنع الزوم في iOS) */
+  background-color: #181c23;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #2a2f3a;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+/* تحسين اللمس للجوال */
+select:focus {
+  border-color: #4f9cff;
+}
+
+/* للجوال الصغير */
+@media (max-width: 480px) {
+  select {
+    padding: 14px;
+    font-size: 15px;
+margin-left: 110px;
+  }
+}
+
+/* تابلت */
+@media (min-width: 481px) and (max-width: 1024px) {
+  select {
+    font-size: 16px;
+    margin-left: 110px;
+  }
+}
+
 
       .product h2{
  font-family: 'Cairo', sans-serif;
@@ -432,7 +511,7 @@ nav ul li a:hover {
         margin-left: 10px;
       }
       .new-price {
-        color: #e60000;
+        color: #7cffbb;
         font-weight: bold;
         font-size: 1.1em;
       }
