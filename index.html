@@ -288,56 +288,6 @@
       text-shadow: 0 0 10px #000;
     }
 
-    .cards {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
- .card {
-  background: linear-gradient(45deg, #3a3c45, #444752, #686c82);
-  background-size: 200% 200%;
-  animation: cardBG 4s linear infinite;
-  width: 250px;
-  height: 250px;
-  border-radius: 16px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s;
-  cursor: pointer;
-  margin-top: 0px; /* الوضع العادي للجوال */
-}
-
-/* 👇 هذا الجزء يشتغل فقط على الشاشات الأكبر من 768px (يعني تابلت أو كمبيوتر) */
-@media (min-width: 768px) {
-  .card {
-    margin-top: -120px; /* ارفع الكروت فوق فقط على الشاشات الكبيرة */
-  }
-}
-
-
-    @keyframes cardBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
- 
-    a {
-      text-decoration: none;
-    }
 
 
   .welcome-screen {
@@ -447,21 +397,22 @@
   padding: 6px;
   }
 
-  /* تنسيق صورة "اختر القسم" */
-  .choeseSection {
-    width: 250px;
-    max-width: 90%;
-    display: block;
-    margin: 10px auto; /* الوضع الطبيعي للجوال */
-  }
+ .choeseSection {
+  width: 100%;       /* الصورة تشغل كامل الحاوية */
+  max-width: 275px;  /* الحد الأقصى للعرض على البيسي */
+  height: auto;      /* يحافظ على نسبة الطول للعرض */
+  display: block;
+  margin: 0 auto;    /* توسيط الصورة */
+}
 
-  /* رفع صورة القسم قليلاً على الأجهزة الأكبر من 768px */
-  @media (min-width: 768px) {
-    .choeseSection {
-      margin-top: -20px;
-      margin-bottom: 100px;
-    }
+/* Media Query للجوال */
+@media (max-width: 768px) {
+  .choeseSection {
+    max-width: 225px; /* تصغير الصورة على الجوال */
   }
+}
+
+
 </style>
 
 <!-- ✅ HTML -->
@@ -469,29 +420,100 @@
 
 <img class="choeseSection" src="choeseSection.gif"   alt="اختر القسم"    draggable="false">
 
+<style>
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
 
-  <div class="cards">
-    <a href="bloxfruits.html" target="_blank">
-      <div class="card">
-        <img src="bloxfruitsimage.gif" alt="Blox Fruits">
-       
-      </div>
-    </a>
+/* البطاقات */
+.card {
+  position: relative;
+  width: 250px;   /* حجم البيسي */
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
 
-    <a href="desgins.html" target="_blank">
-      <div class="card">
-        <img src="desgin236.gif" alt=" desgins - section">
-        
-      </div>
-    </a>
+  background: linear-gradient(45deg, #3a3c45, #444752, #686c82);
+  background-size: 400% 400%;
+  animation: cardBG 8s ease infinite;
 
-    <a href="Discordsection.html" target="_blank" >
-      <div class="card">
-        <img src="des-section.gif" alt="Steel brainrot">
-        
-      </div>
-    </a>
-  </div>
+  /* ظل الكرت */
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  transition: transform 0.3s;
+}
+
+
+
+/* Hover effect */
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* الصور داخل الكرت */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* حركة الخلفية */
+@keyframes cardBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Stroke يدور */
+@keyframes rotateStroke {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+/* 👇 لجعل الثلاثة بالعرض دائمًا على البيسي */
+@media (min-width: 992px) {
+  .cards {
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+/* 👇 الجوال: تصغير الكرت مع الحفاظ على 3 بالعرض */
+@media (max-width: 768px) {
+  .card {
+    width: 150px; /* حجم أصغر للجوال */
+    height: 150px;
+  }
+}
+</style>
+
+<div class="cards">
+  <a href="bloxfruits.html" target="_blank">
+    <div class="card">
+      <img src="bloxfruitsimage.gif" alt="Blox Fruits">
+    </div>
+  </a>
+
+  <a href="desgins.html" target="_blank">
+    <div class="card">
+      <img src="desgin236.gif" alt="desgins - section">
+    </div>
+  </a>
+
+  <a href="Discordsection.html" target="_blank">
+    <div class="card">
+      <img src="des-section.gif" alt="Steel brainrot">
+    </div>
+  </a>
+</div>
+
   <script>
   // بعد ثانيتين يبدأ الفتح
   setTimeout(() => {
@@ -503,7 +525,6 @@
     document.querySelector('.welcome-screen').style.display = 'none';
   }, 4000);
 </script>
-
 
 </body>
 </html>
